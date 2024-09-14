@@ -1,2 +1,2 @@
 # VTCAcademy-FinalProject
-Dứ án cuối trong chu trình học ở học viện VTC Academy
+Dự án cuối trong chu trình học ở học viện VTC Academy
