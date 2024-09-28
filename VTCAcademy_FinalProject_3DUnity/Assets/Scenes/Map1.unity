@@ -24390,6 +24390,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -24531,6 +24532,26 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3531b9d1415eea0409b747c6efdd8f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1411609338}
+  offset: {x: 0, y: 0.5, z: 0}
+  xSpeed: 5
+  ySpeed: 4
+  xMinRotation: -360
+  xMaxRotation: 360
+  yMinRotation: -80
+  yMaxRotation: 80
 --- !u!1001 &964528263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35528,6 +35549,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed54500e552c49842816dfb2156d2362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterWalkingSpeed: 5
+  characterSprintingSpeed: 8
+  characterJumpForce: 8
+  keyCodeForSprint: 304
 --- !u!54 &1411609334
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35553,7 +35578,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &1411609335
 CapsuleCollider:

@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     [Header("Attribute Camera")]
     public Transform target;
-    [SerializeField] private Vector3 offset = new Vector3 (0, 1.7f, -4f);
+    [SerializeField] private Vector3 offset = new Vector3 (0, 0.5f, 0f);
     private Quaternion rotation;
 
     // Attribute Mouse
@@ -17,33 +17,30 @@ public class CameraManager : MonoBehaviour
 
     [SerializeField] private float xMinRotation = -360f;
     [SerializeField] private float xMaxRotation = 360f;
-    [SerializeField] private float yMinRotation = 10f;
+    [SerializeField] private float yMinRotation = -80f;
     [SerializeField] private float yMaxRotation = 80f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = !Cursor.visible;
+        Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+
         Vector3 angles = this.transform.eulerAngles;
         x = angles.x;
         y = angles.y;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape))
         { 
             Cursor.visible = !Cursor.visible;
             Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
         }
 
         CameraMove();
-        rotation = Quaternion.Euler(y, x, 0);
+        rotation = Quaternion.Euler(-y, x, 0);
 
         Vector3 distanceVector = offset;
         Vector3 position = rotation * distanceVector + target.position;
