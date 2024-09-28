@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ROTATECLOCFAN : MonoBehaviour
 {
-        public float SpeedX,SpeedY,SpeedZ;
+    public float SpeedX,SpeedY,SpeedZ;
 	
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class ROTATECLOCFAN : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate (SpeedX,SpeedY,SpeedZ);
+        transform.Rotate(SpeedX,SpeedY,SpeedZ);
     }
 }
