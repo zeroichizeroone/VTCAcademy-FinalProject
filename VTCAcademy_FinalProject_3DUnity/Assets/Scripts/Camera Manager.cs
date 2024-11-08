@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -136,26 +136,35 @@ public class CameraManager : MonoBehaviour
         door.transform.rotation = endRotation;
     }
 
+
+
+    private bool isDrawerMoved = false; // theo doi trang thai ngan keo
     private IEnumerator MoveDrawer(GameObject drawer, float distance)
     {
         float timeToMove = 0.8f;
-        Vector3 startPosition = drawer.transform.localPosition; 
+        Vector3 startPosition = drawer.transform.localPosition;
         Vector3 endPosition;
 
+        // kiem tra neu da di chuyen
         Vector3 moveDirection = drawer.transform.InverseTransformDirection(-drawer.transform.forward);
 
-        if (drawer.transform.rotation.x == 0)
+        if (!isDrawerMoved)
         {
+            // Di chuyen ra ngoai
             endPosition = startPosition + moveDirection * distance;
-            Debug.Log("End: " + endPosition);
+            Debug.Log("Moving Drawer Out. End Position: " + endPosition);
+            isDrawerMoved = true; // danh dau da di chuyen ra
         }
         else
         {
-            endPosition = startPosition;
+            // di chuyen ve vi tri ban dau
+            endPosition = startPosition - moveDirection * distance;
+            Debug.Log("Moving Drawer Back to Start. End Position: " + endPosition);
+            isDrawerMoved = false; // danh dau da quay lai
         }
 
         float elapsedTime = 0;
-        
+
         while (elapsedTime < timeToMove)
         {
             drawer.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / timeToMove);
@@ -163,7 +172,7 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
 
-        drawer.transform.localPosition = endPosition;
+        drawer.transform.localPosition = endPosition; // dam bao ngan keo dat lai vi tri cuoi cung
     }
 
 
@@ -178,7 +187,7 @@ public class CameraManager : MonoBehaviour
 
             case "drawer":
                 Debug.Log("cc");
-                StartCoroutine(MoveDrawer(interactiveObject, 0.6f));
+                StartCoroutine(MoveDrawer(interactiveObject, 0.3f));
                 break;
         }
     }
