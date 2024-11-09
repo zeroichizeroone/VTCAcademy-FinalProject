@@ -114,13 +114,15 @@ public class CameraManager : MonoBehaviour
         float timeToRotate = 1.6f;
         Quaternion startRotation = door.transform.rotation;
         Quaternion endRotation = Quaternion.Euler(door.transform.rotation.x, door.transform.rotation.y, door.transform.rotation.z);
-        if (door.transform.rotation.x == 0)
+        if (door.name.Substring(door.name.Length - 3) != "_ON")
         {
             endRotation = Quaternion.Euler(1, door.transform.eulerAngles.y + 125, 0);
+            AddObjectName(door, "_ON");
         }
         else
         {
             endRotation = Quaternion.Euler(0, door.transform.eulerAngles.y - 125, 0);
+            RemoveEndName(door, 3);
         }
 
 
@@ -136,31 +138,23 @@ public class CameraManager : MonoBehaviour
         door.transform.rotation = endRotation;
     }
 
-
-
-    private bool isDrawerMoved = false; // theo doi trang thai ngan keo
     private IEnumerator MoveDrawer(GameObject drawer, float distance)
     {
         float timeToMove = 0.8f;
         Vector3 startPosition = drawer.transform.localPosition;
         Vector3 endPosition;
 
-        // kiem tra neu da di chuyen
         Vector3 moveDirection = drawer.transform.InverseTransformDirection(-drawer.transform.forward);
 
-        if (!isDrawerMoved)
+        if (drawer.name.Substring(drawer.gameObject.name.Length - 3) != "_ON")
         {
-            // Di chuyen ra ngoai
             endPosition = startPosition + moveDirection * distance;
-            Debug.Log("Moving Drawer Out. End Position: " + endPosition);
-            isDrawerMoved = true; // danh dau da di chuyen ra
+            AddObjectName(drawer, "_ON");
         }
         else
         {
-            // di chuyen ve vi tri ban dau
+            RemoveEndName(drawer, 3);
             endPosition = startPosition - moveDirection * distance;
-            Debug.Log("Moving Drawer Back to Start. End Position: " + endPosition);
-            isDrawerMoved = false; // danh dau da quay lai
         }
 
         float elapsedTime = 0;
@@ -172,7 +166,7 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
 
-        drawer.transform.localPosition = endPosition; // dam bao ngan keo dat lai vi tri cuoi cung
+        drawer.transform.localPosition = endPosition;
     }
 
 
@@ -190,5 +184,15 @@ public class CameraManager : MonoBehaviour
                 StartCoroutine(MoveDrawer(interactiveObject, 0.3f));
                 break;
         }
+    }
+
+    private void AddObjectName(GameObject crrObject, string newName)
+    {
+        crrObject.name += newName;        
+    }
+
+    private void RemoveEndName(GameObject crrObject, int index)
+    {
+        crrObject.name = crrObject.name.Substring(0, crrObject.name.Length - index);
     }
 }
