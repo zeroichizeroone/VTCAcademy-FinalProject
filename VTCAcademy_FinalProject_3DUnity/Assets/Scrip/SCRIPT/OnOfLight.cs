@@ -30,7 +30,7 @@ public class OnOfLight : MonoBehaviour
             lightSource.enabled = !lightSource.enabled;
 
             // In ra console để kiểm tra trạng thái
-            Debug.Log("Light toggled: " + (lightSource.enabled ? "On" : "Off"));
+            // Debug.Log("Light toggled: " + (lightSource.enabled ? "On" : "Off"));
         }
     }
 }

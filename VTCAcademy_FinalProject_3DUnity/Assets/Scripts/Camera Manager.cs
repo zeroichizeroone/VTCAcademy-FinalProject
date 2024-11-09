@@ -95,6 +95,9 @@ public class CameraManager : MonoBehaviour
                     case "drawer":
                         InteractiveObject(currentObject, "drawer");
                         break;
+                    case "item":
+                        InteractiveObject(currentObject, "item");
+                        break;
                 }
             }
         }
@@ -175,13 +178,15 @@ public class CameraManager : MonoBehaviour
         switch (type)
         {
             case "door":
-                Debug.Log("ee");
                 StartCoroutine(RotateDoor(interactiveObject));
                 break;
 
             case "drawer":
-                Debug.Log("cc");
                 StartCoroutine(MoveDrawer(interactiveObject, 0.3f));
+                break;
+
+            case "item":
+                MessageManager.Instance.ShowTextMessage(interactiveObject.GetComponent<ItemInGame>().itemMessage);
                 break;
         }
     }

@@ -34,7 +34,7 @@ public class RanDomTiLing : MonoBehaviour
             material.mainTextureScale = new Vector2(randomX, randomY);
 
             // In ra console để kiểm tra
-            Debug.Log($"New Tiling: {randomX}, {randomY}");
+            // Debug.Log($"New Tiling: {randomX}, {randomY}");
         }
     }
 }
