@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,9 +23,8 @@ public class CameraManager : MonoBehaviour
     [Header("Door Interaction")]
     public GameObject detectObjectPoint;
     public float rayDistance = 5f;
-    public LayerMask doorLayer;
-    private bool isLookingAtDoor = false;
-    private GameObject currentDoor;
+    public LayerMask detectableLayer;
+    private GameObject currentObject;
 
     // Start is called before the first frame update
     void Start()
@@ -74,45 +73,56 @@ public class CameraManager : MonoBehaviour
         return Mathf.Clamp(angle, min, max);
     }
 
-    private void CheckDoor()
+    private void CheckObject()
     {
         // Get ray point in middle screen
         Ray ray =  Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, rayDistance, doorLayer))
+        if (Physics.Raycast(ray, out hit, rayDistance, detectableLayer))
         {
-            isLookingAtDoor = true;
-            currentDoor = hit.collider.gameObject;
-            Debug.Log("Looking at a door");
-            if (detectObjectPoint.activeSelf == false)
+            currentObject = hit.collider.gameObject;
+            detectObjectPoint.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                detectObjectPoint.SetActive(true);
+                switch (currentObject.tag)
+                {
+                    case "door":
+                        InteractiveObject(currentObject, "door");
+                        break;
+
+                    case "drawer":
+                        InteractiveObject(currentObject, "drawer");
+                        break;
+                }
             }
         }
         else
         {
-            isLookingAtDoor = false;
-            currentDoor = null;
             detectObjectPoint.SetActive(false);
-        }
-
-        if (isLookingAtDoor && Input.GetKeyDown(KeyCode.E))
-        {
-            OpenDoor(currentDoor);
         }
     }
 
     private void Update()
     {
-        CheckDoor();
+        CheckObject();
     }
 
     private IEnumerator RotateDoor(GameObject door)
     {
         float timeToRotate = 1.6f;
         Quaternion startRotation = door.transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(0, door.transform.eulerAngles.y + 125, 0);
+        Quaternion endRotation = Quaternion.Euler(door.transform.rotation.x, door.transform.rotation.y, door.transform.rotation.z);
+        if (door.transform.rotation.x == 0)
+        {
+            endRotation = Quaternion.Euler(1, door.transform.eulerAngles.y + 125, 0);
+        }
+        else
+        {
+            endRotation = Quaternion.Euler(0, door.transform.eulerAngles.y - 125, 0);
+        }
+
 
         float elapsedTime = 0;
 
@@ -126,8 +136,59 @@ public class CameraManager : MonoBehaviour
         door.transform.rotation = endRotation;
     }
 
-    private void OpenDoor(GameObject doorObject)
+
+
+    private bool isDrawerMoved = false; // theo doi trang thai ngan keo
+    private IEnumerator MoveDrawer(GameObject drawer, float distance)
     {
-        StartCoroutine(RotateDoor(doorObject));
+        float timeToMove = 0.8f;
+        Vector3 startPosition = drawer.transform.localPosition;
+        Vector3 endPosition;
+
+        // kiem tra neu da di chuyen
+        Vector3 moveDirection = drawer.transform.InverseTransformDirection(-drawer.transform.forward);
+
+        if (!isDrawerMoved)
+        {
+            // Di chuyen ra ngoai
+            endPosition = startPosition + moveDirection * distance;
+            Debug.Log("Moving Drawer Out. End Position: " + endPosition);
+            isDrawerMoved = true; // danh dau da di chuyen ra
+        }
+        else
+        {
+            // di chuyen ve vi tri ban dau
+            endPosition = startPosition - moveDirection * distance;
+            Debug.Log("Moving Drawer Back to Start. End Position: " + endPosition);
+            isDrawerMoved = false; // danh dau da quay lai
+        }
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < timeToMove)
+        {
+            drawer.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / timeToMove);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        drawer.transform.localPosition = endPosition; // dam bao ngan keo dat lai vi tri cuoi cung
+    }
+
+
+    private void InteractiveObject(GameObject interactiveObject, string type)
+    {
+        switch (type)
+        {
+            case "door":
+                Debug.Log("ee");
+                StartCoroutine(RotateDoor(interactiveObject));
+                break;
+
+            case "drawer":
+                Debug.Log("cc");
+                StartCoroutine(MoveDrawer(interactiveObject, 0.3f));
+                break;
+        }
     }
 }
