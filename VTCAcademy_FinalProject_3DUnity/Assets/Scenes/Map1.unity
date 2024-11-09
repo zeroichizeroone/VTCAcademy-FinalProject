@@ -11583,7 +11583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421711042}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -24554,7 +24554,7 @@ MonoBehaviour:
   yMinRotation: -80
   yMaxRotation: 80
   detectObjectPoint: {fileID: 1840943925}
-  rayDistance: 0.5
+  rayDistance: 1
   doorLayer:
     serializedVersion: 2
     m_Bits: 64
