@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraManager : MonoBehaviour
 {
     [Header("Attribute Camera")]
     public Transform target;
-    [SerializeField] private Vector3 offset = new Vector3 (0, 0.5f, 0f);
+    [SerializeField] private Vector3 offset = new Vector3(0, 0.5f, 0f);
     private Quaternion rotation;
 
     // Attribute Mouse
@@ -26,6 +27,9 @@ public class CameraManager : MonoBehaviour
     public LayerMask detectableLayer;
     private GameObject currentObject;
 
+    [Header("Post-Processing Magic Eyes")]
+    public GameObject post_processing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +44,7 @@ public class CameraManager : MonoBehaviour
     private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
+        {
             Cursor.visible = !Cursor.visible;
             Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
         }
@@ -76,7 +80,7 @@ public class CameraManager : MonoBehaviour
     private void CheckObject()
     {
         // Get ray point in middle screen
-        Ray ray =  Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, rayDistance, detectableLayer))
@@ -110,6 +114,11 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         CheckObject();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        { 
+            ActiveMagicEyes();
+        }
     }
 
     private IEnumerator RotateDoor(GameObject door)
@@ -193,11 +202,16 @@ public class CameraManager : MonoBehaviour
 
     private void AddObjectName(GameObject crrObject, string newName)
     {
-        crrObject.name += newName;        
+        crrObject.name += newName;
     }
 
     private void RemoveEndName(GameObject crrObject, int index)
     {
         crrObject.name = crrObject.name.Substring(0, crrObject.name.Length - index);
+    }
+
+    private void ActiveMagicEyes()
+    { 
+        post_processing.GetComponent<PostProcessVolume>().enabled = !post_processing.GetComponent<PostProcessVolume>().isActiveAndEnabled;
     }
 }
