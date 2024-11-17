@@ -88,6 +88,13 @@ public class CameraManager : MonoBehaviour
             {
                 switch (currentObject.tag)
                 {
+                    case "pickup":
+                        InteractiveObject(currentObject, "pickup");
+                        break;
+                    case "cupboard":
+                        InteractiveObject(currentObject, "cupboard"); 
+                        break;
+                     
                     case "door":
                         InteractiveObject(currentObject, "door");
                         break;
@@ -98,6 +105,7 @@ public class CameraManager : MonoBehaviour
                     case "item":
                         InteractiveObject(currentObject, "item");
                         break;
+
                 }
             }
         }
@@ -141,6 +149,35 @@ public class CameraManager : MonoBehaviour
         door.transform.rotation = endRotation;
     }
 
+    private IEnumerator RotateCupboard(GameObject cupboard)
+    {
+        float timeToRotate = 1.6f;
+        Quaternion startRotation = cupboard.transform.rotation;
+        Quaternion endRotation = Quaternion.Euler(cupboard.transform.rotation.x, cupboard.transform.rotation.y, cupboard.transform.rotation.z);
+        if (cupboard.name.Substring(cupboard.name.Length - 3) != "_ON")
+        {
+            endRotation = Quaternion.Euler(1, cupboard.transform.eulerAngles.y + 90, 0);
+            AddObjectName(cupboard, "_ON");
+        }
+        else
+        {
+            endRotation = Quaternion.Euler(0, cupboard.transform.eulerAngles.y - 90, 0);
+            RemoveEndName(cupboard, 3);
+        }
+
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < timeToRotate)
+        {
+            cupboard.transform.rotation = Quaternion.Lerp(startRotation, endRotation, (elapsedTime / timeToRotate));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        cupboard.transform.rotation = endRotation;
+    }
+
     private IEnumerator MoveDrawer(GameObject drawer, float distance)
     {
         float timeToMove = 0.8f;
@@ -177,6 +214,13 @@ public class CameraManager : MonoBehaviour
     {
         switch (type)
         {
+            case "pickup":
+                StartCoroutine(RotateCupboard(interactiveObject));
+                break;
+
+            case "cupboard":
+                StartCoroutine(RotateCupboard(interactiveObject)); 
+                break;
             case "door":
                 StartCoroutine(RotateDoor(interactiveObject));
                 break;
@@ -188,7 +232,39 @@ public class CameraManager : MonoBehaviour
             case "item":
                 MessageManager.Instance.ShowTextMessage(interactiveObject.GetComponent<ItemInGame>().itemMessage);
                 break;
+
         }
+    }
+
+    private void PlaceItemInFront(GameObject item)
+    {
+        // Đặt vật phẩm ở trước mặt nhân vật
+        Vector3 positionInFront = target.position + target.forward * 1.5f + Vector3.up * 1f; // Bắt đầu từ vị trí cao hơn để rơi xuống
+        item.transform.position = positionInFront;
+        item.transform.rotation = Quaternion.identity; // Đặt hướng mặc định
+
+        // Bỏ parent nếu vật phẩm đang được cầm trên tay
+        item.transform.SetParent(null);
+
+        // Bắt đầu hiệu ứng rơi
+        StartCoroutine(DropItemEffect(item));
+    }
+
+    private IEnumerator DropItemEffect(GameObject item)
+    {
+        float elapsedTime = 0f;
+        float dropDuration = 0.5f; // Thời gian rơi (tùy chỉnh)
+        Vector3 startPosition = item.transform.position;
+        Vector3 endPosition = startPosition - Vector3.up * 0.5f; // Rơi xuống 0.5 đơn vị
+
+        while (elapsedTime < dropDuration)
+        {
+            item.transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / dropDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        item.transform.position = endPosition; // Đảm bảo đã đặt chính xác vị trí cuối
     }
 
     private void AddObjectName(GameObject crrObject, string newName)

@@ -1,4 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
+using static UnityEditor.Progress;
+using UnityEngine.UI;
+
 
 public class Charactermanager : MonoBehaviour
 {
@@ -6,18 +9,62 @@ public class Charactermanager : MonoBehaviour
     public float characterWalkingSpeed = 5;
     public float characterSprintingSpeed = 8;
     public float characterJumpForce = 8;
+    public Transform handTransform;
+    private GameObject currentItem;
+    private ItemInGame itemScript;
 
     [Header("Button in game")]
     public KeyCode keyCodeForSprint = KeyCode.LeftShift;
-    
-    private Rigidbody rb;
 
+    private Rigidbody rb;
+    private Camera mainCamera;
     private void Start() {
         rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
+
     }
     private void Update() {
         HandleMovement();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (currentItem != null)
+            {
+                DropItem();
+            }
+            else
+            {
+                PickUpItem();
+            }
+        }
     }
+    //void DropItem()
+    //{
+    //    if (currentItem != null)
+    //    {
+    //        itemScript.Drop();
+    //        currentItem.transform.SetParent(null);
+    //        currentItem = null;
+    //    }
+    //}
+    //void PickUpItem()
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(transform.position, transform.forward, out hit, 3f))  // Kiểm tra phạm vi 3m
+    //    {
+    //        Item item = hit.collider.GetComponent<Item>();
+    //        if (item != null && !item.isHeld)
+    //        {
+    //            currentItem = hit.collider.gameObject;
+    //            itemScript = item;
+    //            itemScript.PickUp();
+
+    //            
+    //            currentItem.transform.SetParent(handTransform);
+    //            currentItem.transform.localPosition = Vector3.zero;  // Đặt đồ vật vào vị trí chính xác trong tay
+    //            currentItem.transform.localRotation = Quaternion.identity;
+    //        }
+    //    }
+    //}
 
     private void HandleMovement()
     {
@@ -58,5 +105,38 @@ public class Charactermanager : MonoBehaviour
         }
     }
 
-    
+
+    private void PickUpItem()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 3f))
+        {
+            ItemInGame item = hit.collider.GetComponent<ItemInGame>();
+            if (item != null && !item.isHeld)
+            {
+                currentItem = hit.collider.gameObject;
+                itemScript = item;
+                itemScript.PickUP();
+
+                // Gắn đồ vật vào tay nhân vật
+                currentItem.transform.SetParent(handTransform);
+                currentItem.transform.localPosition = Vector3.zero;
+                currentItem.transform.localRotation = Quaternion.identity;
+            }
+        }
+    }
+
+    private void DropItem()
+    {
+        if (currentItem != null)
+        {
+            itemScript.Drop();
+            currentItem.transform.SetParent(null);
+            currentItem = null;
+        }
+    }
+
+
 }
