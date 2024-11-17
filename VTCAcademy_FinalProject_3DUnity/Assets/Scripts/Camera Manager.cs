@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
     [Header("Attribute Camera")]
     public Transform target;
+    public bool isProcessing = true;
+
     [SerializeField] private Vector3 offset = new Vector3(0, 0.5f, 0f);
     private Quaternion rotation;
 
@@ -21,7 +24,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float yMinRotation = -80f;
     [SerializeField] private float yMaxRotation = 80f;
 
-    [Header("Door Interaction")]
+    [Header("Item Interaction")]
     public GameObject detectObjectPoint;
     public float rayDistance = 5f;
     public LayerMask detectableLayer;
@@ -30,7 +33,6 @@ public class CameraManager : MonoBehaviour
     [Header("Post-Processing Magic Eyes")]
     public GameObject post_processing;
 
-    // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = !Cursor.visible;
@@ -45,17 +47,25 @@ public class CameraManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.visible = !Cursor.visible;
-            Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+            OnOffMouseOption();
         }
 
-        CameraMove();
-        rotation = Quaternion.Euler(-y, x, 0);
+        if (isProcessing)
+        {
+            CameraMove();
+            rotation = Quaternion.Euler(-y, x, 0);
 
-        Vector3 distanceVector = offset;
-        Vector3 position = rotation * distanceVector + target.position;
-        transform.rotation = rotation;
-        transform.position = position;
+            Vector3 distanceVector = offset;
+            Vector3 position = rotation * distanceVector + target.position;
+            transform.rotation = rotation;
+            transform.position = position;
+        }
+    }
+
+    public void OnOffMouseOption()
+    {
+        Cursor.visible = !Cursor.visible;
+        Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
     public void CameraMove()
@@ -79,7 +89,6 @@ public class CameraManager : MonoBehaviour
 
     private void CheckObject()
     {
-        // Get ray point in middle screen
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
@@ -90,19 +99,9 @@ public class CameraManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                switch (currentObject.tag)
-                {
-                    case "door":
-                        InteractiveObject(currentObject, "door");
-                        break;
+                Item itemDetected = currentObject.GetComponent<Item>();
 
-                    case "drawer":
-                        InteractiveObject(currentObject, "drawer");
-                        break;
-                    case "item":
-                        InteractiveObject(currentObject, "item");
-                        break;
-                }
+                itemDetected.ActiveInteraction();
             }
         }
         else
@@ -116,102 +115,13 @@ public class CameraManager : MonoBehaviour
         CheckObject();
 
         if (Input.GetKeyDown(KeyCode.Q))
-        { 
+        {
             ActiveMagicEyes();
         }
     }
 
-    private IEnumerator RotateDoor(GameObject door)
-    {
-        float timeToRotate = 1.6f;
-        Quaternion startRotation = door.transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(door.transform.rotation.x, door.transform.rotation.y, door.transform.rotation.z);
-        if (door.name.Substring(door.name.Length - 3) != "_ON")
-        {
-            endRotation = Quaternion.Euler(1, door.transform.eulerAngles.y + 125, 0);
-            AddObjectName(door, "_ON");
-        }
-        else
-        {
-            endRotation = Quaternion.Euler(0, door.transform.eulerAngles.y - 125, 0);
-            RemoveEndName(door, 3);
-        }
-
-
-        float elapsedTime = 0;
-
-        while (elapsedTime < timeToRotate)
-        {
-            door.transform.rotation = Quaternion.Lerp(startRotation, endRotation, (elapsedTime / timeToRotate));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        door.transform.rotation = endRotation;
-    }
-
-    private IEnumerator MoveDrawer(GameObject drawer, float distance)
-    {
-        float timeToMove = 0.8f;
-        Vector3 startPosition = drawer.transform.localPosition;
-        Vector3 endPosition;
-
-        Vector3 moveDirection = drawer.transform.InverseTransformDirection(-drawer.transform.forward);
-
-        if (drawer.name.Substring(drawer.gameObject.name.Length - 3) != "_ON")
-        {
-            endPosition = startPosition + moveDirection * distance;
-            AddObjectName(drawer, "_ON");
-        }
-        else
-        {
-            RemoveEndName(drawer, 3);
-            endPosition = startPosition - moveDirection * distance;
-        }
-
-        float elapsedTime = 0;
-
-        while (elapsedTime < timeToMove)
-        {
-            drawer.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / timeToMove);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        drawer.transform.localPosition = endPosition;
-    }
-
-
-    private void InteractiveObject(GameObject interactiveObject, string type)
-    {
-        switch (type)
-        {
-            case "door":
-                StartCoroutine(RotateDoor(interactiveObject));
-                break;
-
-            case "drawer":
-                StartCoroutine(MoveDrawer(interactiveObject, 0.3f));
-                break;
-
-            case "item":
-                MessageManager.Instance.ShowTextMessage(interactiveObject.GetComponent<ItemInGame>().itemMessage);
-                break;
-        }
-    }
-
-    private void AddObjectName(GameObject crrObject, string newName)
-    {
-        crrObject.name += newName;
-    }
-
-    private void RemoveEndName(GameObject crrObject, int index)
-    {
-        crrObject.name = crrObject.name.Substring(0, crrObject.name.Length - index);
-    }
-
     private void ActiveMagicEyes()
-    { 
+    {
         post_processing.GetComponent<PostProcessVolume>().enabled = !post_processing.GetComponent<PostProcessVolume>().isActiveAndEnabled;
     }
 }
