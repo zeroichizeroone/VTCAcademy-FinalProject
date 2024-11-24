@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using static UnityEditor.Progress;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -10,8 +10,11 @@ public class Charactermanager : MonoBehaviour
     public float characterSprintingSpeed = 8;
     public float characterJumpForce = 8;
     public Transform handTransform;
-    private GameObject currentItem;
-    private ItemInGame itemScript;
+    public Camera playerCamera;
+    public float pickupRange = 3f; 
+    public Transform holdPosition; 
+    private GameObject heldItem; // vat pham hien dang cam 
+
 
     [Header("Button in game")]
     public KeyCode keyCodeForSprint = KeyCode.LeftShift;
@@ -23,48 +26,23 @@ public class Charactermanager : MonoBehaviour
         mainCamera = Camera.main;
 
     }
-    private void Update() {
+    private void Update() 
+    {
         HandleMovement();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (currentItem != null)
+            if (heldItem == null)
             {
-                DropItem();
+                TryPickupItem();
             }
             else
             {
-                PickUpItem();
+                DropItem();
             }
         }
-    }
-    //void DropItem()
-    //{
-    //    if (currentItem != null)
-    //    {
-    //        itemScript.Drop();
-    //        currentItem.transform.SetParent(null);
-    //        currentItem = null;
-    //    }
-    //}
-    //void PickUpItem()
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(transform.position, transform.forward, out hit, 3f))  // Kiểm tra phạm vi 3m
-    //    {
-    //        Item item = hit.collider.GetComponent<Item>();
-    //        if (item != null && !item.isHeld)
-    //        {
-    //            currentItem = hit.collider.gameObject;
-    //            itemScript = item;
-    //            itemScript.PickUp();
 
-    //            
-    //            currentItem.transform.SetParent(handTransform);
-    //            currentItem.transform.localPosition = Vector3.zero;  // Đặt đồ vật vào vị trí chính xác trong tay
-    //            currentItem.transform.localRotation = Quaternion.identity;
-    //        }
-    //    }
-    //}
+    }
 
     private void HandleMovement()
     {
@@ -105,38 +83,110 @@ public class Charactermanager : MonoBehaviour
         }
     }
 
-
-    private void PickUpItem()
+    private void TryPickupItem()
     {
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 3f))
+        // Raycast kiem tra item co dang trong tam nhat hay khong
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, pickupRange))
         {
-            ItemInGame item = hit.collider.GetComponent<ItemInGame>();
-            if (item != null && !item.isHeld)
+            Item item = hit.collider.GetComponent<Item>();
+            if (item != null && item.itemType == ItemType.none && item.isInteracting == true )
             {
-                currentItem = hit.collider.gameObject;
-                itemScript = item;
-                itemScript.PickUP();
-
-                // Gắn đồ vật vào tay nhân vật
-                currentItem.transform.SetParent(handTransform);
-                currentItem.transform.localPosition = Vector3.zero;
-                currentItem.transform.localRotation = Quaternion.identity;
+                PickupItem(hit.collider.gameObject);
+                
             }
+        }
+
+    }
+    private Vector3 originalScale;
+
+
+    private void PickupItem(GameObject item_obj)
+    {
+        heldItem = item_obj;
+
+        // luu ty le dau vao cua item
+        originalScale = heldItem.transform.localScale;
+
+        // gan vat pham vao holdPosition
+        heldItem.transform.SetParent(holdPosition);
+        heldItem.transform.localPosition = Vector3.zero; // dat vat pham o giua
+        heldItem.transform.localRotation = Quaternion.identity; // Reset goc quay
+        heldItem.transform.localScale = Vector3.one; // dat ty le chuan de tranh bien dang
+
+        // vo hieu hoa vat ly 
+        Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            item_obj.AddComponent<Rigidbody>();
+            item_obj.GetComponent<Rigidbody>().isKinematic = true;
+            
+            
+        }
+        else
+        {
+            rb.isKinematic = true; 
+           
+        }
+
+        MeshCollider collider = heldItem.GetComponent<MeshCollider>();
+        if (collider != null)
+        {
+            collider.convex = true;
+            collider.isTrigger = true;
         }
     }
 
     private void DropItem()
     {
-        if (currentItem != null)
-        {
-            itemScript.Drop();
-            currentItem.transform.SetParent(null);
-            currentItem = null;
-        }
-    }
+        heldItem.GetComponent<Item>().isInteracting = false;
+        heldItem.transform.SetParent(null);
 
+
+        // khoi phuc ty le ban dau
+        heldItem.transform.localScale = originalScale;
+
+        // dat item truoc mat nguoi choi
+        Vector3 dropPosition = playerCamera.transform.position + playerCamera.transform.forward * 0.5f;
+        heldItem.transform.position = dropPosition;
+
+        // kich lai vat lys
+        Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+
+        MeshCollider collider = heldItem.GetComponent<MeshCollider>();
+        if (collider != null)
+        {
+            
+            collider.isTrigger = false;
+        }
+
+        StartCoroutine(DisablePhysicsAfterDelay(heldItem, rb, collider, 1.5f));
+
+        heldItem = null;
+
+
+    }
+    private IEnumerator DisablePhysicsAfterDelay(GameObject item_obj, Rigidbody rb, MeshCollider collider, float delay)
+    {
+        
+        yield return new WaitForSeconds(delay);
+
+        // xoa Rigidbody và tat convex sau khoan tg
+        if (rb != null)
+        {
+            Destroy(rb);
+        }
+
+        if (collider != null)
+        {
+            collider.convex = false;
+        }
+        item_obj.GetComponent<Item>().isInteracting = true ;
+        
+    }
 
 }

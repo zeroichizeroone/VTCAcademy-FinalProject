@@ -6,8 +6,10 @@ public enum ItemType
 { 
     door,
     drawer,
+    cupboard,
     collectionItem,
     examineItem,
+    none,
 }
 
 public class Item : MonoBehaviour
@@ -17,6 +19,8 @@ public class Item : MonoBehaviour
     public string itemDescription;
     public string itemMessage;
     public bool isInteracted;
+    public bool isInteracting = false; // ngat tuong tac vat the
+    
 
     // Attributes for examine item
     private bool isExamineMode;
@@ -40,6 +44,8 @@ public class Item : MonoBehaviour
 
     public void ActiveInteraction()
     {
+        if (isInteracting) return;
+
         Debug.Log("Activeee");
         switch (itemType)
         {             
@@ -50,10 +56,14 @@ public class Item : MonoBehaviour
             case ItemType.drawer:
                 StartCoroutine(DrawerInteraction(0.6f));
                 break;
+            case ItemType.cupboard:
+                StartCoroutine(CupboardInteraction(65));
+                break; 
 
             case ItemType.collectionItem:
                 break;
-
+            case ItemType.none:
+                    break;
             case ItemType.examineItem:
                 ExamineItem();
                 ShowDescription();
@@ -82,6 +92,7 @@ public class Item : MonoBehaviour
 
     private IEnumerator DoorInteraction(int angleRotate)
     {
+        isInteracting = true;
         float timeToRotate = 1.6f;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
@@ -106,10 +117,12 @@ public class Item : MonoBehaviour
 
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
+        isInteracting =  false;
     }
 
     private IEnumerator DrawerInteraction(float pullDistance)
     {
+        isInteracting = true ;
         float timeToMove = 0.8f;
         Vector3 startPosition = transform.localPosition;
         Vector3 endPosition;
@@ -136,6 +149,38 @@ public class Item : MonoBehaviour
 
         transform.localPosition = endPosition;
         isInteracted = !isInteracted;
+        isInteracting = false;
+    }
+
+
+    private IEnumerator CupboardInteraction(int angleRotate)
+    {
+        isInteracting = true;
+        float timeToRotate = 1.6f;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+
+        if (isInteracted == false)
+        {
+            endRotation = Quaternion.Euler(0, transform.eulerAngles.y + angleRotate, 0);
+        }
+        else
+        {
+            endRotation = Quaternion.Euler(0, transform.eulerAngles.y - angleRotate, 0);
+        }
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < timeToRotate)
+        {
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, (elapsedTime / timeToRotate));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = endRotation;
+        isInteracted = !isInteracted;
+        isInteracting=false;
     }
 
     private void RotateExamineObject()
@@ -189,4 +234,6 @@ public class Item : MonoBehaviour
             }
         }
     }
+
+    
 }
