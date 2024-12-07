@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 1
   m_FogColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_FogMode: 3
@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -172,6 +169,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -374,6 +373,10 @@ PrefabInstance:
       value: BALL
       objectReference: {fileID: 0}
     - target: {fileID: 8300994813574167326, guid: 363628eb234b39f44aebd725576c6472, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8300994813574167326, guid: 363628eb234b39f44aebd725576c6472, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -440,6 +443,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8300994813574167326, guid: 363628eb234b39f44aebd725576c6472, type: 3}
       insertIndex: -1
       addedObject: {fileID: 738808465}
+    - targetCorrespondingSourceObject: {fileID: 8300994813574167326, guid: 363628eb234b39f44aebd725576c6472, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 738808469}
   m_SourcePrefab: {fileID: 100100000, guid: 363628eb234b39f44aebd725576c6472, type: 3}
 --- !u!4 &20731716 stripped
 Transform:
@@ -847,6 +853,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 633979657128008237, guid: 945049627ddd6fb46951d818555c5328, type: 3}
   m_PrefabInstance: {fileID: 26835510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &32195155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8021170567638181586, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
+  m_PrefabInstance: {fileID: 1683921283}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &42315125
 PrefabInstance:
@@ -2046,6 +2057,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3728,6 +3741,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4626,9 +4641,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181459603}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -5062,6 +5076,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BOTTLE 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3861365428851657768, guid: f43bfcbfa579f53459533a01c337409a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4529921706833024658, guid: f43bfcbfa579f53459533a01c337409a, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -5121,7 +5139,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3861365428851657768, guid: f43bfcbfa579f53459533a01c337409a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 379161727}
   m_SourcePrefab: {fileID: 100100000, guid: f43bfcbfa579f53459533a01c337409a, type: 3}
 --- !u!4 &204268808 stripped
 Transform:
@@ -5168,9 +5189,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212346417}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 5
@@ -6798,9 +6818,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263510812}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -7492,9 +7511,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277659531}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
   m_Range: 12
@@ -7886,9 +7904,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286561093}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 0.24528301, g: 0.18423387, b: 0.12842648, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -8294,6 +8311,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8660,6 +8679,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8907,9 +8928,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304335042}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -9482,9 +9502,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339207204}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 3
@@ -9594,6 +9613,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10484,6 +10505,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9207642939330345191, guid: d7800e1d75243564e9bcebbdb17477b6, type: 3}
   m_PrefabInstance: {fileID: 376684447}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &379161723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3861365428851657768, guid: f43bfcbfa579f53459533a01c337409a, type: 3}
+  m_PrefabInstance: {fileID: 204268807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &379161727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379161723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: 
+  itemDescription: "M\u1ED9t chai r\u01B0\u1EE3u"
+  itemMessage: 
+  isInteracted: 0
+  isInteracting: 0
 --- !u!1001 &379346391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11569,9 +11613,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417873919}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 5
@@ -11967,6 +12010,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12919,6 +12964,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13007,9 +13054,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481336190}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -14469,9 +14515,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523754176}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
   m_Range: 12
@@ -15630,9 +15675,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585671666}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -15853,9 +15897,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590930805}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 0.58026737, g: 0.57254905, b: 0.7176471, a: 1}
   m_Intensity: 0.58
   m_Range: 10
@@ -16675,6 +16718,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17244,9 +17289,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638035936}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2
   m_Range: 6
@@ -17716,9 +17760,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656015627}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
   m_Range: 12
@@ -18453,6 +18496,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -20301,6 +20346,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &738808469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738808461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: 
+  itemDescription: "Qu\u1EA3 b\xF3ng c\u0169 k\u0129 nh\u01B0ng v\u1EABn ch\u01B0a
+    x\u1EB9p"
+  itemMessage: 
+  isInteracted: 0
+  isInteracting: 0
 --- !u!1001 &741096147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21217,9 +21281,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771824424}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -21312,9 +21375,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772814795}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 0
-  m_Shape: 0
   m_Color: {r: 0.7652129, g: 0.9245283, b: 0.68467426, a: 1}
   m_Intensity: 0.71
   m_Range: 5.57
@@ -22045,7 +22107,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 294509349}
     m_Modifications:
     - target: {fileID: 7653125657886439971, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c41acb2e21456034888c49fe500045cb, type: 2}
     - target: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
@@ -22744,7 +22806,7 @@ PrefabInstance:
       value: TV SCREEN
       objectReference: {fileID: 0}
     - target: {fileID: 8318088445056412207, guid: 5c419a562eea7844eafc9a04f70f11ee, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d1bb1f7e53fb13343a1926b041feee0d, type: 2}
     m_RemovedComponents: []
@@ -23994,6 +24056,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -25722,9 +25786,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980308398}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 3
@@ -26279,6 +26342,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -27938,6 +28003,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -29797,6 +29864,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -30018,9 +30087,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170874897}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 2
@@ -30454,6 +30522,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -30941,9 +31011,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189604647}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 2
@@ -31117,9 +31186,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195222693}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 5
@@ -33498,11 +33566,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 2009565386}
     m_Modifications:
     - target: {fileID: 7653125657886439971, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c41acb2e21456034888c49fe500045cb, type: 2}
     - target: {fileID: 7653125658106165036, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 90ab3e71c50e9374891dddf34c006d59, type: 2}
     - target: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
@@ -33705,9 +33773,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301878433}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.6037736, g: 0.28442165, b: 0.05980776, a: 1}
   m_Intensity: 1.53
   m_Range: 3
@@ -33832,6 +33899,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -34238,6 +34307,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -35933,6 +36004,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -36318,9 +36391,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400098553}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 8
@@ -36884,9 +36956,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417989193}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 0.5
   m_Range: 8
@@ -37777,9 +37848,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460457491}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 3
@@ -39025,9 +39095,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503641595}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 0.5
   m_Range: 5
@@ -41187,9 +41256,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594159388}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 3
@@ -42077,7 +42145,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 294509349}
     m_Modifications:
     - target: {fileID: 7653125657886439971, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c41acb2e21456034888c49fe500045cb, type: 2}
     - target: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
@@ -43310,6 +43378,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -43384,9 +43454,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668071860}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -44009,16 +44078,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: PAN
       objectReference: {fileID: 0}
+    - target: {fileID: 8021170567638181586, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021170567638181586, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8021170567638181586, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1683921288}
   m_SourcePrefab: {fileID: 100100000, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
 --- !u!4 &1683921284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7213425810967116904, guid: 9ff8f6e0188240447a1a330c78294613, type: 3}
   m_PrefabInstance: {fileID: 1683921283}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1683921288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32195155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: 
+  itemDescription: "M\u1ED9t c\xE1i ch\u1EA3o b\xECnh th\u01B0\u1EDDng"
+  itemMessage: 
+  isInteracted: 0
+  isInteracting: 0
 --- !u!1001 &1684383005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44455,6 +44553,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -44987,9 +45087,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727589783}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 7
@@ -45945,9 +46044,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748428352}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 3
@@ -46424,6 +46522,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -47133,6 +47233,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -48702,6 +48804,8 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -49059,9 +49163,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861726465}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 1
   m_Range: 1
@@ -50740,9 +50843,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924151351}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
   m_Range: 12
@@ -51056,9 +51158,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939225890}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2
   m_Range: 6
@@ -51294,9 +51395,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950917720}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 2
@@ -51622,9 +51722,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965456599}
   m_Enabled: 0
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 5
@@ -52055,6 +52154,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1354305442956494618, guid: 251a602fcfe5c8b49b47eeeac7acdde6, type: 3}
   m_PrefabInstance: {fileID: 1970927668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1970937510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8022510243699684238, guid: 84c0e7427bb4c21438de606ef847a2eb, type: 3}
+  m_PrefabInstance: {fileID: 2035873114}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1971257861
 PrefabInstance:
@@ -53556,6 +53660,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -54121,16 +54227,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: BOTTLE 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8022510243699684238, guid: 84c0e7427bb4c21438de606ef847a2eb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8022510243699684238, guid: 84c0e7427bb4c21438de606ef847a2eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2035873119}
   m_SourcePrefab: {fileID: 100100000, guid: 84c0e7427bb4c21438de606ef847a2eb, type: 3}
 --- !u!4 &2035873115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7214342343360948532, guid: 84c0e7427bb4c21438de606ef847a2eb, type: 3}
   m_PrefabInstance: {fileID: 2035873114}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2035873119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970937510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 4
+  itemName: 
+  itemDescription: "c\xE1i chai"
+  itemMessage: 
+  isInteracted: 0
+  isInteracting: 0
 --- !u!1001 &2039913332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56393,9 +56524,8 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120815369}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 11
   m_Type: 2
-  m_Shape: 0
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
   m_Range: 2
@@ -56992,6 +57122,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

@@ -197,13 +197,19 @@ public class Item : MonoBehaviour
     }
 
     private void ExamineItem()
-    { 
+    {
         // Make item in center camera
         Camera mainCam = Camera.main;
         CameraManager cameraManager = mainCam.GetComponent<CameraManager>();
 
+        Rigidbody rb = transform.GetComponent<Rigidbody>();
         if (isExamineMode == false)
         {
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+            }
+
             // Enter examine item
             cameraManager.isProcessing = false;
             cameraManager.OnOffMouseOption();
@@ -231,6 +237,7 @@ public class Item : MonoBehaviour
             {
                 transform.position = oldPositon;
                 transform.rotation = oldRotation;
+                rb.isKinematic = false;
             }
         }
     }
