@@ -22183,10 +22183,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PAPER 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1798839506526508484, guid: ec7ed82960421c74c965dd0c795eb8f4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798839506526508484, guid: ec7ed82960421c74c965dd0c795eb8f4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1798839506526508484, guid: ec7ed82960421c74c965dd0c795eb8f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1123842515}
   m_SourcePrefab: {fileID: 100100000, guid: ec7ed82960421c74c965dd0c795eb8f4, type: 3}
 --- !u!4 &817051815 stripped
 Transform:
@@ -25681,7 +25692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 3
+  itemType: 2
   itemName: 
   itemDescription: "\u0110\xE2y l\xE0 c\xE1i g\u1ED1i v\xF4 d\u1EE5ng"
   itemMessage: 
@@ -28559,6 +28570,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 633979657128008237, guid: 945049627ddd6fb46951d818555c5328, type: 3}
   m_PrefabInstance: {fileID: 1120967472}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123842511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1798839506526508484, guid: ec7ed82960421c74c965dd0c795eb8f4, type: 3}
+  m_PrefabInstance: {fileID: 817051814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1123842515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123842511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6fd8d716f78844e96351212a817d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 3
+  itemName: Paper
+  itemDescription: Day la to giay gi vay???
+  itemMessage: 
+  isInteracted: 0
 --- !u!1001 &1125517776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39721,6 +39754,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6611245228833705307, guid: b45935eaa5897a64bb796e879d5024a1, type: 3}
   m_PrefabInstance: {fileID: 1533366876}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1534629064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534629065}
+  - component: {fileID: 1534629066}
+  m_Layer: 7
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534629065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534629064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1765941931}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534629066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534629064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d7be4539f113f4199dd6b2759a22f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1543251916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46133,7 +46210,8 @@ Transform:
   m_LocalPosition: {x: 11.477, y: 3.62, z: -1.63}
   m_LocalScale: {x: 0.5, y: 0.8, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1534629065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1765941932

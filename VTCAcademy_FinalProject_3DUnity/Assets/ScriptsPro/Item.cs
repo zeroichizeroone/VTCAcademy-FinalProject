@@ -27,12 +27,12 @@ public class Item : MonoBehaviour
     {
         // Rotate object if player in Examine Mode
         if (isExamineMode)
-        { 
+        {
             RotateExamineObject();
 
             // Complete examine
             if (Input.GetKeyDown(KeyCode.P))
-            { 
+            {
                 ExamineItem();
             }
         }
@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
     {
         Debug.Log("Activeee");
         switch (itemType)
-        {             
+        {
             case ItemType.door:
                 StartCoroutine(DoorInteraction(125));
                 break;
@@ -52,11 +52,12 @@ public class Item : MonoBehaviour
                 break;
 
             case ItemType.collectionItem:
+                ExamineItem();
+                ShowDescription();
                 break;
 
             case ItemType.examineItem:
                 ExamineItem();
-                ShowDescription();
                 ShowDescription();
                 break;
         }
@@ -65,7 +66,7 @@ public class Item : MonoBehaviour
     private void ShowDescription()
     {
         if (itemDescription != "")
-        { 
+        {
             // Show description
             MessageManager.Instance.ShowTextMessage(itemDescription);
         }
@@ -74,7 +75,7 @@ public class Item : MonoBehaviour
     private void ShowMessage()
     {
         if (itemMessage != "")
-        { 
+        {
             // Show message
         }
 
@@ -152,7 +153,7 @@ public class Item : MonoBehaviour
     }
 
     private void ExamineItem()
-    { 
+    {
         // Make item in center camera
         Camera mainCam = Camera.main;
         CameraManager cameraManager = mainCam.GetComponent<CameraManager>();
@@ -180,13 +181,22 @@ public class Item : MonoBehaviour
 
             if (itemType == ItemType.collectionItem)
             {
-                // Save items collection
+                CollectItem();
             }
             else if (itemType == ItemType.examineItem)
             {
                 transform.position = oldPositon;
                 transform.rotation = oldRotation;
             }
+
+            // Turn off message, description
+            MessageManager.Instance.HideMessage();
         }
+    }
+
+    private void CollectItem()
+    { 
+        InventoryManager.Instance.AddItemToInventory(this);
+        transform.gameObject.SetActive(false);
     }
 }
