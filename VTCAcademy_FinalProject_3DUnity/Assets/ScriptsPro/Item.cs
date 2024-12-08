@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
     public bool isInteracted;
 
     // Attributes for examine item
-    private bool isExamineMode;
+    public bool isExamineMode;
     private Vector3 oldPositon;
     private Quaternion oldRotation;
 
@@ -29,18 +29,12 @@ public class Item : MonoBehaviour
         if (isExamineMode)
         {
             RotateExamineObject();
-
-            // Complete examine
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                ExamineItem();
-            }
         }
     }
 
     public void ActiveInteraction()
     {
-        Debug.Log("Activeee");
+        Debug.Log("Active Interaction - Item");
         switch (itemType)
         {
             case ItemType.door:
@@ -152,7 +146,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void ExamineItem()
+    public void ExamineItem()
     {
         // Make item in center camera
         Camera mainCam = Camera.main;

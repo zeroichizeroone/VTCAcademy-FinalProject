@@ -96,10 +96,18 @@ public class CameraManager : MonoBehaviour
         {
             currentObject = hit.collider.gameObject;
             detectObjectPoint.SetActive(true);
+            ButtonSuggestionManager.Instance.ShowButtonSuggestion("E");
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Item itemDetected = currentObject.GetComponent<Item>();
+
+                // Check if player in examine mode
+                if (itemDetected.isExamineMode == true)
+                {
+                    itemDetected.ExamineItem();
+                    return;
+                }
 
                 itemDetected.ActiveInteraction();
             }
@@ -107,6 +115,7 @@ public class CameraManager : MonoBehaviour
         else
         {
             detectObjectPoint.SetActive(false);
+            ButtonSuggestionManager.Instance.HideButtonSuggestion("E");
         }
     }
 
