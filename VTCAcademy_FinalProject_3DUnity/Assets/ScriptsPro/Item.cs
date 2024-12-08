@@ -163,7 +163,7 @@ public class Item : MonoBehaviour
             oldPositon = transform.position;
             oldRotation = transform.rotation;
 
-            transform.position = mainCam.transform.position + mainCam.transform.forward;
+            transform.position = mainCam.transform.position + mainCam.transform.forward * 0.5f;
         }
         else
         {

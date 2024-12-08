@@ -125,11 +125,12 @@ public class CameraManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            ActiveMagicEyes();
+            Debug.Log("Active - Detective Vision");
+            ActiveDetectiveVision();
         }
     }
 
-    private void ActiveMagicEyes()
+    private void ActiveDetectiveVision()
     {
         post_processing.GetComponent<PostProcessVolume>().enabled = !post_processing.GetComponent<PostProcessVolume>().isActiveAndEnabled;
     }

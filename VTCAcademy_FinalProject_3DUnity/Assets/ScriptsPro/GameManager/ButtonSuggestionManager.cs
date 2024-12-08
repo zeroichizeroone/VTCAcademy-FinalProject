@@ -7,7 +7,10 @@ public class ButtonSuggestionManager : MonoBehaviour
     public static ButtonSuggestionManager Instance { get; private set; }
 
     // Suggest button show
+    [Header("Right")]
     public GameObject goSuggestButton_E;
+    [Header("Left")]
+    public GameObject goSuggestButton_Q;
 
     private void Awake()
     {
@@ -28,6 +31,9 @@ public class ButtonSuggestionManager : MonoBehaviour
             case "E":
                 goSuggestButton_E.SetActive(true);
                 break;
+            case "Q":
+                goSuggestButton_Q.SetActive(true);
+                break;
         }
     }
 
@@ -37,6 +43,9 @@ public class ButtonSuggestionManager : MonoBehaviour
         {
             case "E":
                 goSuggestButton_E.SetActive(false);
+                break;
+            case "Q":
+                goSuggestButton_Q.SetActive(false);
                 break;
         }
     }
