@@ -6,10 +6,8 @@ public enum ItemType
 { 
     door,
     drawer,
-    cupboard,
     collectionItem,
     examineItem,
-    none,
 }
 
 public class Item : MonoBehaviour
@@ -19,11 +17,9 @@ public class Item : MonoBehaviour
     public string itemDescription;
     public string itemMessage;
     public bool isInteracted;
-    public bool isInteracting = false; // ngat tuong tac vat the
-    
 
     // Attributes for examine item
-    private bool isExamineMode;
+    public bool isExamineMode;
     private Vector3 oldPositon;
     private Quaternion oldRotation;
 
@@ -31,24 +27,16 @@ public class Item : MonoBehaviour
     {
         // Rotate object if player in Examine Mode
         if (isExamineMode)
-        { 
+        {
             RotateExamineObject();
-
-            // Complete examine
-            if (Input.GetKeyDown(KeyCode.P))
-            { 
-                ExamineItem();
-            }
         }
     }
 
     public void ActiveInteraction()
     {
-        if (isInteracting) return;
-
-        Debug.Log("Activeee");
+        Debug.Log("Active Interaction - Item");
         switch (itemType)
-        {             
+        {
             case ItemType.door:
                 StartCoroutine(DoorInteraction(125));
                 break;
@@ -56,17 +44,14 @@ public class Item : MonoBehaviour
             case ItemType.drawer:
                 StartCoroutine(DrawerInteraction(0.6f));
                 break;
-            case ItemType.cupboard:
-                StartCoroutine(CupboardInteraction(65));
-                break; 
 
             case ItemType.collectionItem:
-                break;
-            case ItemType.none:
-                    break;
-            case ItemType.examineItem:
                 ExamineItem();
                 ShowDescription();
+                break;
+
+            case ItemType.examineItem:
+                ExamineItem();
                 ShowDescription();
                 break;
         }
@@ -75,7 +60,7 @@ public class Item : MonoBehaviour
     private void ShowDescription()
     {
         if (itemDescription != "")
-        { 
+        {
             // Show description
             MessageManager.Instance.ShowTextMessage(itemDescription);
         }
@@ -84,7 +69,7 @@ public class Item : MonoBehaviour
     private void ShowMessage()
     {
         if (itemMessage != "")
-        { 
+        {
             // Show message
         }
 
@@ -92,7 +77,6 @@ public class Item : MonoBehaviour
 
     private IEnumerator DoorInteraction(int angleRotate)
     {
-        isInteracting = true;
         float timeToRotate = 1.6f;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
@@ -117,12 +101,10 @@ public class Item : MonoBehaviour
 
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
-        isInteracting =  false;
     }
 
     private IEnumerator DrawerInteraction(float pullDistance)
     {
-        isInteracting = true ;
         float timeToMove = 0.8f;
         Vector3 startPosition = transform.localPosition;
         Vector3 endPosition;
@@ -149,38 +131,6 @@ public class Item : MonoBehaviour
 
         transform.localPosition = endPosition;
         isInteracted = !isInteracted;
-        isInteracting = false;
-    }
-
-
-    private IEnumerator CupboardInteraction(int angleRotate)
-    {
-        isInteracting = true;
-        float timeToRotate = 1.6f;
-        Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
-
-        if (isInteracted == false)
-        {
-            endRotation = Quaternion.Euler(0, transform.eulerAngles.y + angleRotate, 0);
-        }
-        else
-        {
-            endRotation = Quaternion.Euler(0, transform.eulerAngles.y - angleRotate, 0);
-        }
-
-        float elapsedTime = 0;
-
-        while (elapsedTime < timeToRotate)
-        {
-            transform.rotation = Quaternion.Lerp(startRotation, endRotation, (elapsedTime / timeToRotate));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.rotation = endRotation;
-        isInteracted = !isInteracted;
-        isInteracting=false;
     }
 
     private void RotateExamineObject()
@@ -196,20 +146,14 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void ExamineItem()
+    public void ExamineItem()
     {
         // Make item in center camera
         Camera mainCam = Camera.main;
         CameraManager cameraManager = mainCam.GetComponent<CameraManager>();
 
-        Rigidbody rb = transform.GetComponent<Rigidbody>();
         if (isExamineMode == false)
         {
-            if (rb != null)
-            {
-                rb.isKinematic = true;
-            }
-
             // Enter examine item
             cameraManager.isProcessing = false;
             cameraManager.OnOffMouseOption();
@@ -219,7 +163,7 @@ public class Item : MonoBehaviour
             oldPositon = transform.position;
             oldRotation = transform.rotation;
 
-            transform.position = mainCam.transform.position + mainCam.transform.forward;
+            transform.position = mainCam.transform.position + mainCam.transform.forward * 0.5f;
         }
         else
         {
@@ -231,16 +175,22 @@ public class Item : MonoBehaviour
 
             if (itemType == ItemType.collectionItem)
             {
-                // Save items collection
+                CollectItem();
             }
             else if (itemType == ItemType.examineItem)
             {
                 transform.position = oldPositon;
                 transform.rotation = oldRotation;
-                rb.isKinematic = false;
             }
+
+            // Turn off message, description
+            MessageManager.Instance.HideMessage();
         }
     }
 
-    
+    private void CollectItem()
+    { 
+        InventoryManager.Instance.AddItemToInventory(this);
+        transform.gameObject.SetActive(false);
+    }
 }

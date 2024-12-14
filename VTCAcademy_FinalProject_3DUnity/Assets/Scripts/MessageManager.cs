@@ -59,4 +59,9 @@ public class MessageManager : MonoBehaviour
         textMessage.text = fullMessage.Substring(crrCharIndex, charsToShow);
         crrCharIndex += charsToShow;
     }
+
+    public void HideMessage()
+    {
+        formMessage.SetActive(false);
+    }
 }
