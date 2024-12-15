@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType
-{ 
+{
+    none,
     door,
     drawer,
     collectionItem,
@@ -17,6 +18,7 @@ public class Item : MonoBehaviour
     public string itemDescription;
     public string itemMessage;
     public bool isInteracted;
+    public bool isInteracting;
 
     // Attributes for examine item
     public bool isExamineMode;

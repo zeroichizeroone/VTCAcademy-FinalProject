@@ -10,6 +10,14 @@ public class MenuManager : MonoBehaviour
     public Button settingsButton;
     public Button exitButton;
 
+    // Claim GameObject in Main Menu Game
+    public GameObject titleGame;
+    public GameObject mainMenu;
+
+    // Claim GameObject for Setting Menu Game
+    public GameObject settingMenu;
+
+
     private void Start()
     {
         // Ensure all buttons are assigned
@@ -28,17 +36,38 @@ public class MenuManager : MonoBehaviour
     private void OnContinueButtonClicked()
     {
         Debug.Log("Continue Game clicked");
-        LoadGame(); // Implement your logic here
+        LoadGame();
     }
 
     private void OnSettingsButtonClicked()
     {
-        Debug.Log("Settings clicked");
-        OpenSettingsMenu(); // Implement your settings logic here
+        if (titleGame.activeSelf == true && mainMenu.activeSelf == true && settingMenu.activeSelf == false)
+        {
+            Debug.Log("Settings clicked");
+
+            // Make Title Game and Main Menu disappear when Setting Button is clicked
+            titleGame.SetActive(false);
+            mainMenu.SetActive(false);
+            settingMenu.SetActive(true);
+
+            // Open Setting Menu
+            OpenSettingsMenu();
+
+            if (OpenSettingsMenu() == 1)
+            {
+                titleGame.SetActive(true);
+                mainMenu.SetActive(true);
+
+
+            }
+        }
+            
+        
     }
 
     private void OnExitButtonClicked()
     {
+        
         Debug.Log("Exit Game clicked");
         //Application.Quit();
 
@@ -53,9 +82,10 @@ public class MenuManager : MonoBehaviour
         // Add your load logic here
     }
 
-    private void OpenSettingsMenu()
+    private int OpenSettingsMenu()
     {
         Debug.Log("Opening settings menu...");
         // Add your settings menu logic here
+        return 1;
     }
 }
