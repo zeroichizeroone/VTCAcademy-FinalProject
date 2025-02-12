@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryUI;
     public GameObject bag;
     public GameObject itemPrefab;
+
+    [Header("Item Information")]
+    public GameObject itemInformationForm;
+    public Text textItemName;
+    public Image itemImage;
+    public Text textDescription;
+    public Text textMessage;
+
+    private Item currentItem;
 
     private void Awake()
     {
@@ -31,11 +41,40 @@ public class InventoryManager : MonoBehaviour
 
         // Add item in UI
         GameObject newItem = Instantiate(itemPrefab, bag.transform);
+        if (itemCollect.itemImage != null)
+        {
+            newItem.GetComponent<Image>().sprite = itemCollect.itemImage;
+        }
+
+        newItem.GetComponent<Button>().onClick.AddListener(() => ShowItemInfo(itemCollect));
+    }
+
+    public void ShowItemInfo(Item crrItem)
+    { 
+        itemInformationForm.SetActive(true);
+        textItemName.text = crrItem.name;
+        itemImage.sprite = crrItem.itemImage;
+        textDescription.text = crrItem.itemDescription;
+        textMessage.text = crrItem.itemMessage;
     }
 
     public void ActiveInventory()
     {
+
         inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+        Camera mainCamera = Camera.main;
+        ShuraCamera shuraCamera = mainCamera.GetComponent<ShuraCamera>();
+        if (inventoryUI.activeSelf)
+        {
+            inventoryUI.SetActive(false);
+            shuraCamera.isProcessing = true;
+        }
+        else
+        {
+            inventoryUI.SetActive(true);
+            shuraCamera.isProcessing = false;
+        }
     }
 
     // Class Inventory chứa danh sách các vật phẩm của người chơi

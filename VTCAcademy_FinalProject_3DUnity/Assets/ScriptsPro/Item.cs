@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -15,6 +16,7 @@ public enum ItemType
 public class Item : MonoBehaviour
 {
     public ItemType itemType;
+    public Sprite itemImage;
     public string itemName;
     public string itemDescription;
     public string itemMessage;
