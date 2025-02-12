@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MessageManager : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class MessageManager : MonoBehaviour
     public GameObject formMessage;
     public Text textMessage;
 
-    // Private Attibutes
+    // Private Attributes
     private string fullMessage;
     private int crrCharIndex;
     private int charPerPage = 110;
+    private Coroutine typewriterCoroutine;
+    private float typewriterSpeed = 20f;
 
     private void Awake()
     {
@@ -23,11 +26,6 @@ public class MessageManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        if (formMessage != null)
-        {
-            textMessage = formMessage.GetComponentInChildren<Text>();
-        }
     }
 
     private void Update()
@@ -36,6 +34,10 @@ public class MessageManager : MonoBehaviour
         {
             if (crrCharIndex < fullMessage.Length)
             {
+                if (typewriterCoroutine != null)
+                {
+                    StopCoroutine(typewriterCoroutine);
+                }
                 ShowNextPage();
             }
             else
@@ -70,24 +72,44 @@ public class MessageManager : MonoBehaviour
         {
             endIndex = fullMessage.LastIndexOf(' ', endIndex);
             if (endIndex <= crrCharIndex)
-            {
+            {        
                 endIndex = crrCharIndex + charPerPage;
             }
         }
 
         string pageText = fullMessage.Substring(crrCharIndex, endIndex - crrCharIndex);
-
         if (endIndex < fullMessage.Length)
         {
             pageText += "...";
         }
 
-        textMessage.text = pageText;
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+        }
+        typewriterCoroutine = StartCoroutine(TypeText(pageText));
+
         crrCharIndex = endIndex;
+    }
+
+    private IEnumerator TypeText(string text)
+    {
+        textMessage.text = "";
+        float delay = 1f / typewriterSpeed;
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            textMessage.text += text[i];
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     public void HideMessage()
     {
         formMessage.SetActive(false);
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+        }
     }
 }
