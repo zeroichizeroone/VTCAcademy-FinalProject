@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     public bool isInteracting;
 
     private bool isOpening = false; // Kiểm soát trạng thái cửa
+    private bool isDoorOpening = false;
 
     public bool isInteracted;
 
@@ -120,24 +121,24 @@ public class Item : MonoBehaviour
     }
     private IEnumerator DoorInteraction(int angleRotate)
     {
-        if (isOpening) yield break; // Nếu cửa đang mở, không cho phép tương tác tiếp
+        // Kiểm tra nếu cửa có tag "doorkeyitem1" và yêu cầu chìa khóa để mở
+        if (gameObject.CompareTag("doorkeyitem1"))
+        {
+            if (!InventoryManager.Instance.HasItem("doorkeyitem1"))
+            {
+                MessageManager.Instance.ShowTextMessage("Cần chìa khóa để mở cửa!");
+                yield break; // Dừng nếu không có chìa khóa
+            }
+        }
 
-        isOpening = true; // Đánh dấu cửa đang mở
+        if (isDoorOpening) yield break;
+
+        isDoorOpening = true;
         float timeToRotate = 1.6f;
         Quaternion startRotation = transform.rotation;
-        Quaternion endRotation;
-
-        if (!isInteracted)
-        {
-            endRotation = Quaternion.Euler(0, transform.eulerAngles.y + angleRotate, 0);
-        }
-        else
-        {
-            endRotation = Quaternion.Euler(0, transform.eulerAngles.y - angleRotate, 0);
-        }
+        Quaternion endRotation = Quaternion.Euler(0, transform.eulerAngles.y + (isInteracted ? -angleRotate : angleRotate), 0);
 
         float elapsedTime = 0;
-
         while (elapsedTime < timeToRotate)
         {
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime / timeToRotate);
@@ -147,7 +148,7 @@ public class Item : MonoBehaviour
 
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
-        isOpening = false; // Cho phép tương tác lại sau khi cửa mở xong
+        isDoorOpening = false;
     }
 
     private IEnumerator DrawerInteraction(float pullDistance)
@@ -246,10 +247,10 @@ public class Item : MonoBehaviour
     }
 
     private void CollectItem()
-    { 
+    {
+        
         InventoryManager.Instance.AddItemToInventory(this);
-        transform.gameObject.SetActive(false);
-
+        gameObject.SetActive(false);
         ShowMessage();
     }
 }

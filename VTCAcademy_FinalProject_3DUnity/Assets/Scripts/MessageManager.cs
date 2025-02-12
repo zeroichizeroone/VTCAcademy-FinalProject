@@ -47,6 +47,7 @@ public class MessageManager : MonoBehaviour
 
     public void ShowTextMessage(string mess)
     {
+        
         formMessage.SetActive(true);
         fullMessage = mess;
         crrCharIndex = 0;
