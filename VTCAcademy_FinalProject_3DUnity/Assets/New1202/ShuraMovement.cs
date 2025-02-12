@@ -12,42 +12,38 @@ public class ShuraMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cameraTransform;
 
-    private float currentSpeed;
     private float verticalRotation = 0f;
 
-    private void Start()
+    private void Update()
     {
-        controller = GetComponent<CharacterController>();
-        currentSpeed = walkSpeed;
+        HandleMovement();
+        CharacterHotKey();
     }
 
-    private void Update()
+    private void HandleMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            currentSpeed = runSpeed;
-        }
-        else if (Input.GetKey(KeyCode.LeftControl))
-        {
-            currentSpeed = crawlSpeed;
-        }
-        else
-        {
-            currentSpeed = walkSpeed; 
-        }
-
-        Vector3 moveDirection = transform.forward * vertical + transform.right * horizontal;
+        float currentSpeed = GetCurrentSpeed();
+        Vector3 moveDirection = (transform.forward * vertical + transform.right * horizontal).normalized;
         controller.Move(moveDirection * currentSpeed * Time.deltaTime);
+    }
 
-        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
+    private float GetCurrentSpeed()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+            return runSpeed;
+        if (Input.GetKey(KeyCode.LeftControl))
+            return crawlSpeed;
+        return walkSpeed;
+    }
 
-        transform.Rotate(0, mouseX, 0);
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+    public void CharacterHotKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            InventoryManager.Instance.ActiveInventory();
+        }
     }
 }

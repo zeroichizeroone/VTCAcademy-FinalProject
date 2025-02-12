@@ -11,7 +11,7 @@ public class MessageManager : MonoBehaviour
     // Private Attibutes
     private string fullMessage;
     private int crrCharIndex;
-    private int charPerPage = 100;
+    private int charPerPage = 110;
 
     private void Awake()
     {
@@ -55,9 +55,35 @@ public class MessageManager : MonoBehaviour
 
     private void ShowNextPage()
     {
-        int charsToShow = Mathf.Min(charPerPage, fullMessage.Length - crrCharIndex);
-        textMessage.text = fullMessage.Substring(crrCharIndex, charsToShow);
-        crrCharIndex += charsToShow;
+        if (crrCharIndex >= fullMessage.Length)
+        {
+            formMessage.SetActive(false);
+            return;
+        }
+
+        int endIndex = crrCharIndex + charPerPage;
+        if (endIndex >= fullMessage.Length)
+        {
+            endIndex = fullMessage.Length;
+        }
+        else
+        {
+            endIndex = fullMessage.LastIndexOf(' ', endIndex);
+            if (endIndex <= crrCharIndex)
+            {
+                endIndex = crrCharIndex + charPerPage;
+            }
+        }
+
+        string pageText = fullMessage.Substring(crrCharIndex, endIndex - crrCharIndex);
+
+        if (endIndex < fullMessage.Length)
+        {
+            pageText += "...";
+        }
+
+        textMessage.text = pageText;
+        crrCharIndex = endIndex;
     }
 
     public void HideMessage()

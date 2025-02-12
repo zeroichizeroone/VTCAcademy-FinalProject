@@ -17,8 +17,8 @@ public class Item : MonoBehaviour
     public string itemName;
     public string itemDescription;
     public string itemMessage;
-    public bool isInteracted;
     public bool isInteracting;
+    public bool isInteracted;
 
     // Attributes for examine item
     public bool isExamineMode;
@@ -37,6 +37,7 @@ public class Item : MonoBehaviour
     public void ActiveInteraction()
     {
         Debug.Log("Active Interaction - Item");
+
         switch (itemType)
         {
             case ItemType.door:
@@ -47,14 +48,12 @@ public class Item : MonoBehaviour
                 StartCoroutine(DrawerInteraction(0.6f));
                 break;
 
-            case ItemType.collectionItem:
-                ExamineItem();
-                ShowDescription();
-                break;
-
             case ItemType.examineItem:
                 ExamineItem();
-                ShowDescription();
+                break;
+
+            case ItemType.collectionItem:
+                ExamineItem();
                 break;
         }
     }
@@ -73,6 +72,7 @@ public class Item : MonoBehaviour
         if (itemMessage != "")
         {
             // Show message
+            MessageManager.Instance.ShowTextMessage(itemMessage);
         }
 
     }
@@ -150,43 +150,49 @@ public class Item : MonoBehaviour
 
     public void ExamineItem()
     {
-        // Make item in center camera
-        Camera mainCam = Camera.main;
-        CameraManager cameraManager = mainCam.GetComponent<CameraManager>();
+        // Show description
+        ShowDescription();
 
-        if (isExamineMode == false)
+        // Make item in center camera
+        Camera mainCamera = Camera.main;
+        ShuraCamera shuraCamera = mainCamera.GetComponent<ShuraCamera>();
+
+        if (!isExamineMode)
         {
-            // Enter examine item
-            cameraManager.isProcessing = false;
-            cameraManager.OnOffMouseOption();
+            // Enter examine mode
+            shuraCamera.isProcessing = false;
+            shuraCamera.OnOffMouseOption();
 
             isExamineMode = true;
 
+            // Save the item's original position and rotation
             oldPositon = transform.position;
             oldRotation = transform.rotation;
 
-            transform.position = mainCam.transform.position + mainCam.transform.forward * 0.5f;
+            transform.position = mainCamera.transform.position + mainCamera.transform.forward * 0.5f;
         }
         else
         {
             // Exit examine item
-            cameraManager.isProcessing = true;
-            cameraManager.OnOffMouseOption();
+            shuraCamera.isProcessing = true;
+            shuraCamera.OnOffMouseOption();
 
             isExamineMode = false;
+
+            // Turn off description
+            MessageManager.Instance.HideMessage();
 
             if (itemType == ItemType.collectionItem)
             {
                 CollectItem();
             }
+
             else if (itemType == ItemType.examineItem)
             {
                 transform.position = oldPositon;
                 transform.rotation = oldRotation;
+                ShowMessage();
             }
-
-            // Turn off message, description
-            MessageManager.Instance.HideMessage();
         }
     }
 
@@ -194,5 +200,7 @@ public class Item : MonoBehaviour
     { 
         InventoryManager.Instance.AddItemToInventory(this);
         transform.gameObject.SetActive(false);
+
+        ShowMessage();
     }
 }

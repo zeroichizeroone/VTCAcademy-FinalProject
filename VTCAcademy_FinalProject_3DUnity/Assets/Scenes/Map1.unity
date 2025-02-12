@@ -9121,8 +9121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5834a2e9c09614aaad6a2fb64f823a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goSuggestButton_E: {fileID: 1065273584}
   goSuggestButton_Q: {fileID: 1709745435}
+  goSuggestButton_E: {fileID: 1065273584}
 --- !u!1001 &310596145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26044,8 +26044,8 @@ MonoBehaviour:
   itemName: 
   itemDescription: "\u0110\xE2y l\xE0 c\xE1i g\u1ED1i v\xF4 d\u1EE5ng"
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1 &996882692
 GameObject:
@@ -29053,8 +29053,8 @@ MonoBehaviour:
   itemName: Paper
   itemDescription: Day la to giay gi vay???
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1001 &1125517776
 PrefabInstance:
@@ -34711,8 +34711,8 @@ MonoBehaviour:
   itemName: 
   itemDescription: 
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1001 &1331591922
 PrefabInstance:
@@ -39460,8 +39460,8 @@ MonoBehaviour:
   itemName: Door
   itemDescription: 
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1001 &1517372536
 PrefabInstance:
@@ -40345,6 +40345,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d7be4539f113f4199dd6b2759a22f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  bag: {fileID: 0}
+  itemPrefab: {fileID: 0}
 --- !u!1001 &1543251916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45651,7 +45654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1733624932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -48940,8 +48943,8 @@ MonoBehaviour:
   itemName: 
   itemDescription: 
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1 &1848896006
 GameObject:
@@ -49077,8 +49080,8 @@ MonoBehaviour:
   itemName: 
   itemDescription: 
   itemMessage: 
-  isInteracted: 0
   isInteracting: 0
+  isInteracted: 0
   isExamineMode: 0
 --- !u!1001 &1854419020
 PrefabInstance:
