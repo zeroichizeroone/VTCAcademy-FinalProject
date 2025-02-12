@@ -1,10 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType
 {
     none,
+    cupboard,
     door,
     drawer,
     collectionItem,
@@ -19,6 +20,7 @@ public class Item : MonoBehaviour
     public string itemMessage;
     public bool isInteracted;
     public bool isInteracting;
+    private bool isOpening = false; // Kiểm soát trạng thái cửa
 
     // Attributes for examine item
     public bool isExamineMode;
@@ -45,6 +47,10 @@ public class Item : MonoBehaviour
 
             case ItemType.drawer:
                 StartCoroutine(DrawerInteraction(0.6f));
+                break;
+
+            case ItemType.cupboard:
+                StartCoroutine(CupBoardInteraction(75));
                 break;
 
             case ItemType.collectionItem:
@@ -76,14 +82,17 @@ public class Item : MonoBehaviour
         }
 
     }
-
-    private IEnumerator DoorInteraction(int angleRotate)
+    private IEnumerator CupBoardInteraction(int angleRotate)
     {
+
+        if (isOpening) yield break; // Nếu cửa đang mở, không cho phép tương tác tiếp
+
+        isOpening = true; // Đánh dấu cửa đang mở
         float timeToRotate = 1.6f;
         Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
+        Quaternion endRotation;
 
-        if (isInteracted == false)
+        if (!isInteracted)
         {
             endRotation = Quaternion.Euler(0, transform.eulerAngles.y + angleRotate, 0);
         }
@@ -96,24 +105,59 @@ public class Item : MonoBehaviour
 
         while (elapsedTime < timeToRotate)
         {
-            transform.rotation = Quaternion.Lerp(startRotation, endRotation, (elapsedTime / timeToRotate));
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime / timeToRotate);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
+        isOpening = false; // Cho phép tương tác lại sau khi cửa mở xong
+    }
+    private IEnumerator DoorInteraction(int angleRotate)
+    {
+        if (isOpening) yield break; // Nếu cửa đang mở, không cho phép tương tác tiếp
+
+        isOpening = true; // Đánh dấu cửa đang mở
+        float timeToRotate = 1.6f;
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation;
+
+        if (!isInteracted)
+        {
+            endRotation = Quaternion.Euler(0, transform.eulerAngles.y + angleRotate, 0);
+        }
+        else
+        {
+            endRotation = Quaternion.Euler(0, transform.eulerAngles.y - angleRotate, 0);
+        }
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < timeToRotate)
+        {
+            transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime / timeToRotate);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = endRotation;
+        isInteracted = !isInteracted;
+        isOpening = false; // Cho phép tương tác lại sau khi cửa mở xong
     }
 
     private IEnumerator DrawerInteraction(float pullDistance)
     {
+        if (isOpening) yield break; // Nếu ngăn kéo đang mở, không cho phép tương tác tiếp
+
+        isOpening = true; // Đánh dấu đang mở
         float timeToMove = 0.8f;
         Vector3 startPosition = transform.localPosition;
         Vector3 endPosition;
 
         Vector3 moveDirection = transform.InverseTransformDirection(-transform.forward);
 
-        if (isInteracted == false)
+        if (!isInteracted)
         {
             endPosition = startPosition + moveDirection * pullDistance;
         }
@@ -133,6 +177,7 @@ public class Item : MonoBehaviour
 
         transform.localPosition = endPosition;
         isInteracted = !isInteracted;
+        isOpening = false; // Cho phép tương tác lại sau khi hoàn thành mở/ngăn kéo
     }
 
     private void RotateExamineObject()
