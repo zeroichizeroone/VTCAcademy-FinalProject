@@ -8,6 +8,11 @@ public class InventoryManager : MonoBehaviour
 
     private Inventory userInventory;
 
+    [Header("UI")]
+    public GameObject inventoryUI;
+    public GameObject bag;
+    public GameObject itemPrefab;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,5 +33,13 @@ public class InventoryManager : MonoBehaviour
     public void AddItemToInventory(Item itemCollect)
     {
         userInventory.AddItem(itemCollect);
+
+        // Add item in UI
+        GameObject newItem = Instantiate(itemPrefab, bag.transform);
+    }
+
+    public void ActiveInventory()
+    { 
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
 }
