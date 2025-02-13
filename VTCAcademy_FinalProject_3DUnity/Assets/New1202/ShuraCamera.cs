@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ShuraCamera : MonoBehaviour
 {
@@ -9,17 +10,47 @@ public class ShuraCamera : MonoBehaviour
     public bool isProcessing = true;
     public float rotationSpeed = 2f;
 
-
     [Header("Detect")]
     public GameObject detectionPoint;
     public float detectionDistance = 5f;
     public LayerMask detectableLayer;
     private GameObject currentObject;
 
+    [Header("Post-Processing Magic Eyes")]
+    public GameObject post_processing;
+    public bool isActiveDetectiveVision = false;
+
     private void Update()
     {
         HandleCameraRotation();
         DetectObject();
+        InitCameraHotKey();
+    }
+
+    public void InitCameraHotKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        { 
+            OnOffMouseOption();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ActiveDetectiveVision();
+        }
+    }
+
+    private void ActiveDetectiveVision()
+    {
+        if (isActiveDetectiveVision)
+        {
+            post_processing.GetComponent<PostProcessVolume>().enabled = false;
+        }
+        else
+        {
+            post_processing.GetComponent<PostProcessVolume>().enabled = true;
+        }
+
+        isActiveDetectiveVision = !isActiveDetectiveVision;
     }
 
     private void HandleCameraRotation()
