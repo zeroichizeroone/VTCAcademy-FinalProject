@@ -60,11 +60,9 @@ public class InventoryManager : MonoBehaviour
 
     public void ActiveInventory()
     {
-
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
-
         Camera mainCamera = Camera.main;
         ShuraCamera shuraCamera = mainCamera.GetComponent<ShuraCamera>();
+
         if (inventoryUI.activeSelf)
         {
             inventoryUI.SetActive(false);
