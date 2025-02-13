@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class ShuraCamera : MonoBehaviour
 {
@@ -19,6 +21,17 @@ public class ShuraCamera : MonoBehaviour
     [Header("Post-Processing Magic Eyes")]
     public GameObject post_processing;
     public bool isActiveDetectiveVision = false;
+
+    public Image detectiveEnergy;
+    public float maxEnergy = 5000f;
+    public float energyPerSec = 100f;
+    private float currentEnergy;
+
+    private void Start()
+    {
+        currentEnergy = maxEnergy;
+        UpdateEnergyUI();
+    }
 
     private void Update()
     {
@@ -41,16 +54,53 @@ public class ShuraCamera : MonoBehaviour
 
     private void ActiveDetectiveVision()
     {
-        if (isActiveDetectiveVision)
+        isActiveDetectiveVision = !isActiveDetectiveVision;
+
+        post_processing.GetComponent<PostProcessVolume>().enabled = isActiveDetectiveVision;
+
+        foreach (Item item in InventoryManager.Instance.globalItemList)
         {
-            post_processing.GetComponent<PostProcessVolume>().enabled = false;
-        }
-        else
-        {
-            post_processing.GetComponent<PostProcessVolume>().enabled = true;
+            Outline outline = item.GetComponent<Outline>();
+            if (outline == null)
+            {
+                outline = item.gameObject.AddComponent<Outline>();
+                outline.OutlineColor = Color.yellow;
+                outline.OutlineWidth = 4f;
+                outline.OutlineMode = Outline.Mode.OutlineVisible;
+            }
+            outline.enabled = isActiveDetectiveVision;
         }
 
-        isActiveDetectiveVision = !isActiveDetectiveVision;
+        if (isActiveDetectiveVision)
+        {
+            StartCoroutine(UserEnergy());
+        }
+    }
+
+    private IEnumerator UserEnergy()
+    {
+        while (isActiveDetectiveVision)
+        {
+            if (currentEnergy > 0)
+            {
+                currentEnergy -= energyPerSec;
+                if (currentEnergy < 0) currentEnergy = 0;
+                UpdateEnergyUI();
+            }
+
+            if (currentEnergy <= 0)
+            {
+                isActiveDetectiveVision = false;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void UpdateEnergyUI()
+    {
+        detectiveEnergy.fillAmount = currentEnergy / maxEnergy;
     }
 
     private void HandleCameraRotation()
