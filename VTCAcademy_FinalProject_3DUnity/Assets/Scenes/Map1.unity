@@ -4224,6 +4224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shura_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6363622329181208611, guid: 141ea1ce43027f0478a1f8c0f021d4a4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8383037773406395868, guid: 141ea1ce43027f0478a1f8c0f021d4a4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -25502,6 +25506,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8538594297824364303, guid: a3bd1c6b431ecf94caf0d0ee527bc355, type: 3}
   m_PrefabInstance: {fileID: 967433875}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &974714365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2822030522940599034, guid: 2421df29c355eeb46b8c5d4e0b138242, type: 3}
+  m_PrefabInstance: {fileID: 1475065858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &974714368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974714365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fb5d8c56334cc40a8e95d3f8b0d8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980308398
 GameObject:
   m_ObjectHideFlags: 0
@@ -27121,7 +27142,7 @@ GameObject:
   - component: {fileID: 1045054319}
   - component: {fileID: 1045054318}
   - component: {fileID: 1045054317}
-  - component: {fileID: 1045054316}
+  - component: {fileID: 1045054321}
   - component: {fileID: 1045054314}
   m_Layer: 0
   m_Name: Kitchenmessage
@@ -27151,22 +27172,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.2204463e-16, z: 10.000001}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1045054316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1045054313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMessage: "B\u1EBFp tr\u1ED1ng tr\u01A1n, ch\u1EC9 c\xF3 v\xE0i d\u1EE5ng
-    c\u1EE5 \u0111\u01A1n gi\u1EA3n. M\u1ED9t c\u0103n b\u1EBFp m\xE0 ch\u1EB3ng
-    ai th\u1EF1c s\u1EF1 s\u1EED d\u1EE5ng... ho\u1EB7c \u0111\xE3 c\xF3 ai \u0111\xF3
-    d\u1ECDn d\u1EB9p k\u1EF9 l\u01B0\u1EE1ng tr\u01B0\u1EDBc khi t\xF4i \u0111\u1EBFn"
 --- !u!64 &1045054317
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27257,6 +27262,24 @@ Transform:
   - {fileID: 2019178275}
   m_Father: {fileID: 273150802}
   m_LocalEulerAnglesHint: {x: 89.472, y: 0, z: 0}
+--- !u!114 &1045054321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045054313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMessages:
+  - "B\u1EBFp tr\u1ED1ng tr\u01A1n, ch\u1EC9 c\xF3 v\xE0i d\u1EE5ng c\u1EE5 \u0111\u01A1n
+    gi\u1EA3n. M\u1ED9t c\u0103n b\u1EBFp m\xE0 ch\u1EB3ng ai th\u1EF1c s\u1EF1 s\u1EED
+    d\u1EE5ng..."
+  dialogueSounds:
+  - {fileID: 8300000, guid: 581de5f0f19bd374997e03c89e6dcbc0, type: 3}
 --- !u!1001 &1045504780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33396,10 +33419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueMessage: "B\u1EBFp tr\u1ED1ng tr\u01A1n, ch\u1EC9 c\xF3 v\xE0i d\u1EE5ng
-    c\u1EE5 \u0111\u01A1n gi\u1EA3n. M\u1ED9t c\u0103n b\u1EBFp m\xE0 ch\u1EB3ng
-    ai th\u1EF1c s\u1EF1 s\u1EED d\u1EE5ng... ho\u1EB7c \u0111\xE3 c\xF3 ai \u0111\xF3
-    d\u1ECDn d\u1EB9p k\u1EF9 l\u01B0\u1EE1ng tr\u01B0\u1EDBc khi t\xF4i \u0111\u1EBFn"
+  dialogueMessages: []
+  dialogueSounds: []
 --- !u!64 &1283825695
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35354,10 +35375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueMessage: "B\u1EBFp tr\u1ED1ng tr\u01A1n, ch\u1EC9 c\xF3 v\xE0i d\u1EE5ng
-    c\u1EE5 \u0111\u01A1n gi\u1EA3n. M\u1ED9t c\u0103n b\u1EBFp m\xE0 ch\u1EB3ng
-    ai th\u1EF1c s\u1EF1 s\u1EED d\u1EE5ng... ho\u1EB7c \u0111\xE3 c\xF3 ai \u0111\xF3
-    d\u1ECDn d\u1EB9p k\u1EF9 l\u01B0\u1EE1ng tr\u01B0\u1EDBc khi t\xF4i \u0111\u1EBFn"
+  dialogueMessages: []
+  dialogueSounds: []
 --- !u!64 &1350780579
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38885,7 +38904,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2822030522940599034, guid: 2421df29c355eeb46b8c5d4e0b138242, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974714368}
   m_SourcePrefab: {fileID: 100100000, guid: 2421df29c355eeb46b8c5d4e0b138242, type: 3}
 --- !u!1001 &1480911109
 PrefabInstance:
@@ -54229,7 +54251,7 @@ GameObject:
   - component: {fileID: 2019178280}
   - component: {fileID: 2019178279}
   - component: {fileID: 2019178278}
-  - component: {fileID: 2019178277}
+  - component: {fileID: 2019178281}
   - component: {fileID: 2019178276}
   m_Layer: 0
   m_Name: Plane
@@ -54274,20 +54296,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0.0000076293945, z: 0}
---- !u!114 &2019178277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019178274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMessage: "t\u1EE7 tr\xEAn c\xF3 v\xE0i v\u1EBFt b\u1EE5i, c\xF3 v\u1EBB
-    h\u1ECD v\u1EABn ch\u01B0a d\u1ECDn d\u1EB9p trong \u0111\u1EA5y"
 --- !u!64 &2019178278
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54362,6 +54370,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019178274}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2019178281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019178274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cf47872aa19c541b2c3433a2e33125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMessages:
+  - "ho\u1EB7c \u0111\xE3 c\xF3 ai \u0111\xF3 d\u1ECDn d\u1EB9p k\u1EF9 l\u01B0\u1EE1ng
+    tr\u01B0\u1EDBc khi t\xF4i \u0111\u1EBFn"
+  dialogueSounds:
+  - {fileID: 8300000, guid: 4683084666681b948b3e93b735b0762d, type: 3}
 --- !u!1001 &2027846745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57711,7 +57736,7 @@ Transform:
   m_GameObject: {fileID: 919132148963410233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: 0, z: 0}
+  m_LocalPosition: {x: 10.32, y: 0, z: 18.056}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -57921,9 +57946,10 @@ GameObject:
   - component: {fileID: 5866666021029839356}
   - component: {fileID: 5866666021029839355}
   - component: {fileID: 5866666021029839354}
+  - component: {fileID: 5866666021029839357}
   m_Layer: 0
   m_Name: Shura
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61109,6 +61135,103 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!82 &5866666021029839357
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148963410233}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &5977947082332256397
 Transform:
   m_ObjectHideFlags: 0
@@ -61632,7 +61755,7 @@ Transform:
   m_GameObject: {fileID: 856721977121602956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 24.101, y: 0, z: 6.581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
