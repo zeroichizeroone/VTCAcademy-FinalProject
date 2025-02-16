@@ -16,19 +16,26 @@ public class ShuraMovement : MonoBehaviour
     [Header("Crawl")]
     public float crawlCameraDeep = 0.6f;
     public float crawlCameraHeight = 0.5f;
-    public float crawlCharacterHeight = 1f;
-    public float crawlCharacterCenterY = 0.5f;
+    public float crawlCharacterHeight = 0.6f;
+    public float crawlCharacterCenterY = 0.3f;
+
+    [Header("Ladder Climbing")]
+    public float stairClimbSpeed = 2f;
+    public float stairDetectionDistance = 1f;
+    public LayerMask ladderLayer;
 
     private float originalCameraDeep;
     private float originalCameraHeight;
-    private float originalCharacterHeight;
+    private float originalCharacterHeight; 
     private float originalCharacterCenterY;
 
     private bool isCrawling = false;
+    private bool isClimbingLadder = false;
+    private Vector3 ladderDirection;
 
     private float verticalRotation = 0f;
     private Vector3 velocity;
-    
+
     // Animation
     private Animator animator;
     private float currentSpeed;
@@ -95,6 +102,7 @@ public class ShuraMovement : MonoBehaviour
         animator.SetBool("IsRunning", isRunning);
 
         animator.SetBool("IsCrawling", isCrawling);
+        animator.SetBool("IsClimbing", isClimbingLadder);
     }
 
     private void HandleCrawl()

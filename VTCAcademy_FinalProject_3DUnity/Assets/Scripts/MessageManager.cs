@@ -9,6 +9,8 @@ public class MessageManager : MonoBehaviour
     public GameObject formMessage;
     public Text textMessage;
 
+    public GameObject messageWarningObject;
+
     // Private Attributes
     private string fullMessage;
     private int crrCharIndex;
@@ -49,7 +51,7 @@ public class MessageManager : MonoBehaviour
 
     public void ShowTextMessage(string mess)
     {
-        
+
         formMessage.SetActive(true);
         fullMessage = mess;
         crrCharIndex = 0;
@@ -73,7 +75,7 @@ public class MessageManager : MonoBehaviour
         {
             endIndex = fullMessage.LastIndexOf(' ', endIndex);
             if (endIndex <= crrCharIndex)
-            {        
+            {
                 endIndex = crrCharIndex + charPerPage;
             }
         }
@@ -112,5 +114,11 @@ public class MessageManager : MonoBehaviour
         {
             StopCoroutine(typewriterCoroutine);
         }
+    }
+
+    public void ShowMessageWarning(string message)
+    { 
+        messageWarningObject.GetComponent<Text>().text = message;
+        messageWarningObject.SetActive(true);
     }
 }

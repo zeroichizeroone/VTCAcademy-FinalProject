@@ -1,5 +1,7 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
 
 public class ShuraCamera : MonoBehaviour
 {
@@ -20,6 +22,18 @@ public class ShuraCamera : MonoBehaviour
     public GameObject post_processing;
     public bool isActiveDetectiveVision = false;
 
+    public Image detectiveEnergy;
+    public float maxEnergy = 5000f;
+    public float energyPerSec = 100f;
+    private float currentEnergy;
+    private Coroutine energyCorotine;
+
+    private void Start()
+    {
+        currentEnergy = maxEnergy;
+        UpdateEnergyUI();
+    }
+
     private void Update()
     {
         HandleCameraRotation();
@@ -37,20 +51,71 @@ public class ShuraCamera : MonoBehaviour
         {
             ActiveDetectiveVision();
         }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            RestoreEnergy(2000f);
+        }
     }
 
     private void ActiveDetectiveVision()
     {
-        if (isActiveDetectiveVision)
+        if (currentEnergy <= 0)
         {
-            post_processing.GetComponent<PostProcessVolume>().enabled = false;
-        }
-        else
-        {
-            post_processing.GetComponent<PostProcessVolume>().enabled = true;
+            MessageManager.Instance.ShowMessageWarning("[Cần thuốc an thần để vào \"Trạng thái thám tử\"]");
         }
 
         isActiveDetectiveVision = !isActiveDetectiveVision;
+
+        post_processing.GetComponent<PostProcessVolume>().enabled = isActiveDetectiveVision;
+
+        foreach (Item item in InventoryManager.Instance.globalItemList)
+        {
+            Outline outline = item.GetComponent<Outline>();
+            if (outline == null)
+            {
+                outline = item.gameObject.AddComponent<Outline>();
+                outline.OutlineColor = Color.yellow;
+                outline.OutlineWidth = 4f;
+                outline.OutlineMode = Outline.Mode.OutlineVisible;
+            }
+            outline.enabled = isActiveDetectiveVision;
+        }
+
+        if (isActiveDetectiveVision)
+        {
+            if (energyCorotine != null)
+            { 
+                StopCoroutine(energyCorotine);
+            }
+            energyCorotine = StartCoroutine(UseEnergy());
+        }
+    }
+
+    private IEnumerator UseEnergy()
+    {
+        while (isActiveDetectiveVision)
+        {
+            if (currentEnergy > 0)
+            {
+                currentEnergy -= energyPerSec;
+                if (currentEnergy < 0) currentEnergy = 0;
+                UpdateEnergyUI();
+            }
+
+            if (currentEnergy <= 0)
+            {
+                isActiveDetectiveVision = false;
+                post_processing.GetComponent<PostProcessVolume>().enabled = isActiveDetectiveVision;
+                yield break;
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void UpdateEnergyUI()
+    {
+        detectiveEnergy.fillAmount = currentEnergy / maxEnergy;
     }
 
     private void HandleCameraRotation()
@@ -106,5 +171,23 @@ public class ShuraCamera : MonoBehaviour
         }
 
         Debug.DrawRay(ray.origin, ray.direction * detectionDistance, Color.red);
+    }
+
+    public void RestoreEnergy(float energy)
+    {
+        if (currentEnergy == maxEnergy)
+        {
+            MessageManager.Instance.ShowMessageWarning("[Độ tập trung đang đầy]");
+            return;
+        }
+        
+        currentEnergy += energy;
+        
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        UpdateEnergyUI();
     }
 }
