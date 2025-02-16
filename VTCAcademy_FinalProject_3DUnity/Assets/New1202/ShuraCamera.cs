@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
@@ -26,6 +26,7 @@ public class ShuraCamera : MonoBehaviour
     public float maxEnergy = 5000f;
     public float energyPerSec = 100f;
     private float currentEnergy;
+    private Coroutine energyCorotine;
 
     private void Start()
     {
@@ -50,10 +51,19 @@ public class ShuraCamera : MonoBehaviour
         {
             ActiveDetectiveVision();
         }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            RestoreEnergy(2000f);
+        }
     }
 
     private void ActiveDetectiveVision()
     {
+        if (currentEnergy <= 0)
+        {
+            MessageManager.Instance.ShowMessageWarning("[Cần thuốc an thần để vào \"Trạng thái thám tử\"]");
+        }
+
         isActiveDetectiveVision = !isActiveDetectiveVision;
 
         post_processing.GetComponent<PostProcessVolume>().enabled = isActiveDetectiveVision;
@@ -73,11 +83,15 @@ public class ShuraCamera : MonoBehaviour
 
         if (isActiveDetectiveVision)
         {
-            StartCoroutine(UserEnergy());
+            if (energyCorotine != null)
+            { 
+                StopCoroutine(energyCorotine);
+            }
+            energyCorotine = StartCoroutine(UseEnergy());
         }
     }
 
-    private IEnumerator UserEnergy()
+    private IEnumerator UseEnergy()
     {
         while (isActiveDetectiveVision)
         {
@@ -91,6 +105,7 @@ public class ShuraCamera : MonoBehaviour
             if (currentEnergy <= 0)
             {
                 isActiveDetectiveVision = false;
+                post_processing.GetComponent<PostProcessVolume>().enabled = isActiveDetectiveVision;
                 yield break;
             }
 
@@ -156,5 +171,23 @@ public class ShuraCamera : MonoBehaviour
         }
 
         Debug.DrawRay(ray.origin, ray.direction * detectionDistance, Color.red);
+    }
+
+    public void RestoreEnergy(float energy)
+    {
+        if (currentEnergy == maxEnergy)
+        {
+            MessageManager.Instance.ShowMessageWarning("[Độ tập trung đang đầy]");
+            return;
+        }
+        
+        currentEnergy += energy;
+        
+        if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        UpdateEnergyUI();
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -8,16 +8,19 @@ public class ShuraTextEffect : MonoBehaviour
     public bool blinkEffect = false;
     public bool colorChangeEffect = false;
     public bool shakeEffect = false;
+    public bool disappearEffect = false;
 
     [Header("Effect Settings")]
     public float blinkInterval = 1f;
     public Color[] colors;
     public float shakeIntensity = 5f;
+    public float disappearTime = 5f;
 
     private Text targetText;
     private Coroutine blinkCoroutine;
     private Coroutine colorChangeCoroutine;
     private Coroutine shakeCoroutine;
+    private Coroutine disappearCoroutine;
 
     private void Awake()
     {
@@ -48,6 +51,10 @@ public class ShuraTextEffect : MonoBehaviour
         {
             shakeCoroutine = StartCoroutine(ShakeText());
         }
+        if (disappearEffect)
+        {
+            disappearCoroutine = StartCoroutine(DisappearEffect());
+        }
     }
 
     private void StopEffects()
@@ -55,6 +62,7 @@ public class ShuraTextEffect : MonoBehaviour
         if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
         if (colorChangeCoroutine != null) StopCoroutine(colorChangeCoroutine);
         if (shakeCoroutine != null) StopCoroutine(shakeCoroutine);
+        if (disappearCoroutine != null) StopCoroutine(disappearCoroutine);
     }
 
     private IEnumerator FadeBlinkText()
@@ -105,5 +113,11 @@ public class ShuraTextEffect : MonoBehaviour
             targetText.rectTransform.localPosition = originalPosition + new Vector3(offsetX, offsetY, 0);
             yield return null;
         }
+    }
+
+    private IEnumerator DisappearEffect()
+    {
+        yield return new WaitForSeconds(disappearTime);
+        targetText.gameObject.SetActive(false);
     }
 }
