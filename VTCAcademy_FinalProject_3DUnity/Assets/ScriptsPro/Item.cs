@@ -27,6 +27,9 @@ public class Item : MonoBehaviour
 
     public bool isInteracted;
 
+    public string[] dialogueLines;  // Câu thoại khi tương tác
+    public AudioClip[] dialogueClips;  // Âm thanh tương ứng
+
 
     // Attributes for examine item
     public bool isExamineMode;
@@ -45,7 +48,7 @@ public class Item : MonoBehaviour
     public void ActiveInteraction()
     {
         Debug.Log("Active Interaction - Item");
-
+        DialogueManager.Instance.EnqueueDialogue(dialogueLines, dialogueClips, GameObject.FindWithTag("Player"));
         switch (itemType)
         {
             case ItemType.door:
@@ -70,6 +73,7 @@ public class Item : MonoBehaviour
                 break;
         }
     }
+
 
     private void ShowDescription()
     {
@@ -123,14 +127,13 @@ public class Item : MonoBehaviour
     }
     private IEnumerator DoorInteraction(int angleRotate)
     {
-        // Kiểm tra nếu cửa có tag "doorkeyitem1" và yêu cầu chìa khóa để mở
-        if (gameObject.CompareTag("doorkeyitem1"))
+        string doorTag = gameObject.tag;
+
+        // Kiểm tra nếu cửa KHÔNG phải là "DOOR" thì mới yêu cầu chìa khóa
+        if (doorTag != "door" && !InventoryManager.Instance.HasItem(doorTag))
         {
-            if (!InventoryManager.Instance.HasItem("doorkeyitem1"))
-            {
-                MessageManager.Instance.ShowTextMessage("Cần chìa khóa để mở cửa!");
-                yield break; // Dừng nếu không có chìa khóa
-            }
+            MessageManager.Instance.ShowTextMessage("Cần chìa khóa phù hợp để mở cửa!");
+            yield break; // Dừng nếu không có chìa khóa phù hợp
         }
 
         if (isDoorOpening) yield break;

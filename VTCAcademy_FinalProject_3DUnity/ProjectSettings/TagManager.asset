@@ -10,6 +10,7 @@ TagManager:
   - cupboard
   - pickup
   - doorkeyitem1
+  - doorkeyitem2
   layers:
   - Default
   - TransparentFX
