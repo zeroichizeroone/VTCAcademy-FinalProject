@@ -7,7 +7,8 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    private Inventory userInventory = new Inventory(); // Khởi tạo luôn tránh lỗi null
+    public Inventory userInventory = new Inventory(); // Khởi tạo luôn tránh lỗi null
+    public List<Item> globalItemList = new List<Item>();
 
     [Header("UI")]
     public GameObject inventoryUI;
@@ -33,6 +34,20 @@ public class InventoryManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        InitializeGlobalInventory();
+    }
+
+    private void InitializeGlobalInventory()
+    {
+        Item[] allItems = FindObjectsOfType<Item>();
+        foreach (Item item in allItems)
+        {
+            if (!globalItemList.Contains(item))
+            {
+                globalItemList.Add(item);
+            }
+        }
     }
 
     public void AddItemToInventory(Item itemCollect)
