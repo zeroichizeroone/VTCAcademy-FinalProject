@@ -27,11 +27,12 @@ public class Item : MonoBehaviour
 
     public bool isInteracted;
 
-
     // Attributes for examine item
     public bool isExamineMode;
     private Vector3 oldPositon;
     private Quaternion oldRotation;
+
+    public bool isHighlightItem = false;
 
     private void Update()
     {

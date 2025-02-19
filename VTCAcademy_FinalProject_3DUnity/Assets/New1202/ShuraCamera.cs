@@ -28,10 +28,18 @@ public class ShuraCamera : MonoBehaviour
     private float currentEnergy;
     private Coroutine energyCorotine;
 
+    [Header("Camera Shake")]
+    public float shakeDuration = 0.5f; // Thời gian rung lắc
+    public float shakeMagnitude = 0.1f; // Độ lớn của rung lắc
+    public float dampingSpeed = 1.0f; // Tốc độ giảm dần của rung lắc
+    private Vector3 initialPosition; // Vị trí ban đầu của camera
+    private bool isShaking = false; // Kiểm tra xem camera có đang rung lắc không
+
     private void Start()
     {
         currentEnergy = maxEnergy;
         UpdateEnergyUI();
+        initialPosition = cameraTransform.localPosition;
     }
 
     private void Update()
@@ -39,12 +47,19 @@ public class ShuraCamera : MonoBehaviour
         HandleCameraRotation();
         DetectObject();
         InitCameraHotKey();
+
+        // Test
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("SHAKE SHAKEEEE");
+            StartShakeCamera();
+        }
     }
 
     public void InitCameraHotKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
+        {
             OnOffMouseOption();
         }
         if (Input.GetKeyDown(KeyCode.Q))
@@ -62,6 +77,7 @@ public class ShuraCamera : MonoBehaviour
         if (currentEnergy <= 0)
         {
             MessageManager.Instance.ShowMessageWarning("[Cần thuốc an thần để vào \"Trạng thái thám tử\"]");
+            return;
         }
 
         isActiveDetectiveVision = !isActiveDetectiveVision;
@@ -70,21 +86,24 @@ public class ShuraCamera : MonoBehaviour
 
         foreach (Item item in InventoryManager.Instance.globalItemList)
         {
-            Outline outline = item.GetComponent<Outline>();
-            if (outline == null)
+            if (item.isHighlightItem)
             {
-                outline = item.gameObject.AddComponent<Outline>();
-                outline.OutlineColor = Color.yellow;
-                outline.OutlineWidth = 4f;
-                outline.OutlineMode = Outline.Mode.OutlineVisible;
+                Outline outline = item.GetComponent<Outline>();
+                if (outline == null)
+                {
+                    outline = item.gameObject.AddComponent<Outline>();
+                    outline.OutlineColor = Color.yellow;
+                    outline.OutlineWidth = 4f;
+                    outline.OutlineMode = Outline.Mode.OutlineVisible;
+                }
+                outline.enabled = isActiveDetectiveVision;
             }
-            outline.enabled = isActiveDetectiveVision;
         }
 
         if (isActiveDetectiveVision)
         {
             if (energyCorotine != null)
-            { 
+            {
                 StopCoroutine(energyCorotine);
             }
             energyCorotine = StartCoroutine(UseEnergy());
@@ -180,14 +199,43 @@ public class ShuraCamera : MonoBehaviour
             MessageManager.Instance.ShowMessageWarning("[Độ tập trung đang đầy]");
             return;
         }
-        
+
         currentEnergy += energy;
-        
+
         if (currentEnergy > maxEnergy)
         {
             currentEnergy = maxEnergy;
         }
 
         UpdateEnergyUI();
+    }
+
+    public void StartShakeCamera()
+    {
+        StartCoroutine(ShakeCamera());
+    }
+
+    private IEnumerator ShakeCamera()
+    {
+        isShaking = true;
+        float elapsed = 0.0f;
+
+        while (elapsed < shakeDuration)
+        {
+            // Tạo một vị trí ngẫu nhiên trong phạm vi shakeMagnitude
+            Vector3 randomPoint = initialPosition + (Vector3)(Random.insideUnitSphere * shakeMagnitude);
+
+            // Giữ nguyên vị trí Z
+            randomPoint.z = initialPosition.z;
+
+            cameraTransform.localPosition = randomPoint;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Trả camera về vị trí ban đầu
+        cameraTransform.localPosition = initialPosition;
+        isShaking = false;
     }
 }

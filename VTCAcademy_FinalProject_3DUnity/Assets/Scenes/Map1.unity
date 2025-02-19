@@ -21990,6 +21990,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &815239812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23478,6 +23479,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!65 &888614674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23770,6 +23772,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 1
 --- !u!1001 &900046195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25667,6 +25670,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &996882692
 GameObject:
   m_ObjectHideFlags: 0
@@ -28713,6 +28717,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1125517776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34653,6 +34658,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1331591922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37232,6 +37238,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1415572353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39586,6 +39593,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1517372536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42595,6 +42603,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1626235392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46566,6 +46575,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1764157798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47774,6 +47784,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!114 &1795558297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47794,6 +47805,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1798860005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48878,6 +48890,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &1848896006
 GameObject:
   m_ObjectHideFlags: 0
@@ -49016,6 +49029,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1854419020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50385,6 +50399,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &1904101201
 GameObject:
   m_ObjectHideFlags: 0
@@ -52403,6 +52418,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1974200236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52698,6 +52714,9 @@ MonoBehaviour:
   detectiveEnergy: {fileID: 317021890}
   maxEnergy: 5000
   energyPerSec: 100
+  shakeDuration: 2
+  shakeMagnitude: 0.5
+  dampingSpeed: 1
 --- !u!81 &1985615340
 AudioListener:
   m_ObjectHideFlags: 0
@@ -54600,6 +54619,7 @@ MonoBehaviour:
   isInteracting: 0
   isInteracted: 0
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &2039913332
 PrefabInstance:
   m_ObjectHideFlags: 0
