@@ -126,6 +126,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -370,7 +383,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_0": -6696002130673119861
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_1": 8994281133875820367
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_10": 949949714866930485
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_2": -6373153319547112708
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_3": 7616031320275672950
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_4": 2250909152427096749
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_5": -5511891132000673811
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_6": 2792906371627370663
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_7": 8825400961838110857
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_8": 4913832535537988059
+      "\u2014Pngtree\u2014a bunch of home keys_3227474_9": -5054838144545545637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

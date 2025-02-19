@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minIntensity: 0.8
-  maxIntensity: 1.2
-  flickerSpeed: 0.1
+  maxIntensity: 1.5
+  flickerSpeed: 0.2
 --- !u!1001 &6905621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8703,6 +8703,7 @@ Transform:
   - {fileID: 2018970493}
   - {fileID: 1764157799}
   - {fileID: 703276132}
+  - {fileID: 995249819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &295737101
@@ -18943,6 +18944,8 @@ MonoBehaviour:
   dialogueClips:
   - {fileID: 8300000, guid: 4683084666681b948b3e93b735b0762d, type: 3}
   - {fileID: 8300000, guid: 581de5f0f19bd374997e03c89e6dcbc0, type: 3}
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!65 &688057896
 BoxCollider:
@@ -22149,6 +22152,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &815239812
 PrefabInstance:
@@ -23648,6 +23653,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5286e24cd5f68ab438c9bd64d8b04bbd, type: 3}
   - {fileID: 8300000, guid: 062d83eb4bd3bbd4b915fa50a593a5e4, type: 3}
   - {fileID: 8300000, guid: 141084f888aabf84e82cfee3b5934d07, type: 3}
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!65 &888614674
 BoxCollider:
@@ -23942,6 +23949,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &900046195
 PrefabInstance:
@@ -25841,6 +25850,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1 &995249816 stripped
 GameObject:
@@ -25868,7 +25879,14 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
+--- !u!4 &995249819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
+  m_PrefabInstance: {fileID: 1419990416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996882692
 GameObject:
   m_ObjectHideFlags: 0
@@ -29009,6 +29027,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1125517776
 PrefabInstance:
@@ -31452,9 +31472,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b63bb1dff4799f4894836ddc3b59998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkCount: 2
-  blinkDuration: 0.2
-  restTime: 2
+  minBlinkCount: 1
+  maxBlinkCount: 5
+  minBlinkDuration: 0.05
+  maxBlinkDuration: 0.3
+  minRestTime: 1
+  maxRestTime: 4
 --- !u!1001 &1191892305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34949,6 +34972,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1331591922
 PrefabInstance:
@@ -37585,6 +37610,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1415572353
 PrefabInstance:
@@ -37761,7 +37788,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 294509349}
     m_Modifications:
     - target: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_Name
@@ -37789,23 +37816,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 0.37885198
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.1
+      value: 0.347281
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.31571
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.928
+      value: 5.0160003
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008
+      value: 0.0025256802
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.76
+      value: 1.3480818
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37813,7 +37844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalRotation.y
@@ -37821,7 +37852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -38635,6 +38666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460457492}
   - component: {fileID: 1460457493}
+  - component: {fileID: 1460457494}
   m_Layer: 0
   m_Name: Point Light (8)
   m_TagString: Untagged
@@ -38718,6 +38750,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1460457494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460457491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b63bb1dff4799f4894836ddc3b59998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBlinkCount: 1
+  maxBlinkCount: 5
+  minBlinkDuration: 0.05
+  maxBlinkDuration: 0.3
+  minRestTime: 1
+  maxRestTime: 4
 --- !u!1001 &1461299958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40029,6 +40079,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1517372536
 PrefabInstance:
@@ -43013,6 +43065,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
       insertIndex: 3
       addedObject: {fileID: 1621247725}
+    - targetCorrespondingSourceObject: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1621247729}
   m_SourcePrefab: {fileID: 100100000, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
 --- !u!4 &1621247721 stripped
 Transform:
@@ -43040,7 +43095,106 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 1621247729}
+  doorSound: {fileID: 8300000, guid: 531b75ccff44f764cad24aa480c7125b, type: 3}
   isExamineMode: 0
+--- !u!82 &1621247729
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612696115}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1626235392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47013,6 +47167,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1764157798
 PrefabInstance:
@@ -48223,6 +48379,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!114 &1795558297
 MonoBehaviour:
@@ -48245,6 +48403,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1798860005
 PrefabInstance:
@@ -49331,6 +49491,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1 &1848896006
 GameObject:
@@ -49471,6 +49633,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1854419020
 PrefabInstance:
@@ -50842,6 +51006,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1 &1904101201
 GameObject:
@@ -51954,9 +52120,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b63bb1dff4799f4894836ddc3b59998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkCount: 2
-  blinkDuration: 0.2
-  restTime: 2
+  minBlinkCount: 1
+  maxBlinkCount: 5
+  minBlinkDuration: 0.05
+  maxBlinkDuration: 0.3
+  minRestTime: 1
+  maxRestTime: 4
 --- !u!1001 &1951495612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52862,6 +53031,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &1974200236
 PrefabInstance:
@@ -55067,6 +55238,8 @@ MonoBehaviour:
   isInteracted: 0
   dialogueLines: []
   dialogueClips: []
+  audioSource: {fileID: 0}
+  doorSound: {fileID: 0}
   isExamineMode: 0
 --- !u!1001 &2039913332
 PrefabInstance:
@@ -57489,9 +57662,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b63bb1dff4799f4894836ddc3b59998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkCount: 2
-  blinkDuration: 0.2
-  restTime: 2
+  minBlinkCount: 1
+  maxBlinkCount: 5
+  minBlinkDuration: 0.05
+  maxBlinkDuration: 0.3
+  minRestTime: 1
+  maxRestTime: 4
 --- !u!1001 &2124551258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65411,5 +65587,4 @@ SceneRoots:
   - {fileID: 8383037773241240248}
   - {fileID: 2684457869901871557}
   - {fileID: 543450652683754371}
-  - {fileID: 1419990416}
   - {fileID: 1403333874}

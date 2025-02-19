@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public enum ItemType
@@ -29,6 +30,8 @@ public class Item : MonoBehaviour
 
     public string[] dialogueLines;  // Câu thoại khi tương tác
     public AudioClip[] dialogueClips;  // Âm thanh tương ứng
+    public AudioSource audioSource;  // Thêm AudioSource vào cửa
+    public AudioClip doorSound;  // Âm thanh khi mở cửa
 
 
     // Attributes for examine item
@@ -139,6 +142,13 @@ public class Item : MonoBehaviour
         if (isDoorOpening) yield break;
 
         isDoorOpening = true;
+
+        // 🔊 Phát âm thanh mở cửa
+        if (audioSource != null && doorSound != null)
+        {
+            audioSource.PlayOneShot(doorSound);
+        }
+
         float timeToRotate = 1.6f;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = Quaternion.Euler(0, transform.eulerAngles.y + (isInteracted ? -angleRotate : angleRotate), 0);
@@ -155,6 +165,7 @@ public class Item : MonoBehaviour
         isInteracted = !isInteracted;
         isDoorOpening = false;
     }
+
 
     private IEnumerator DrawerInteraction(float pullDistance)
     {
