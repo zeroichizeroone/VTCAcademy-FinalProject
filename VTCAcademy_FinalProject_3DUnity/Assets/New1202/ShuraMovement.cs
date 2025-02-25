@@ -138,4 +138,13 @@ public class ShuraMovement : MonoBehaviour
             InventoryManager.Instance.ActiveInventory();
         }
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.Log("Hit: " + hit.gameObject.name );
+        if (hit.gameObject.name == "DUST")
+        {
+            hit.gameObject.name ="DUST123";
+        }
+    }
 }
