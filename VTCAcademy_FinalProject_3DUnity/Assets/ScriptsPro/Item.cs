@@ -26,8 +26,8 @@ public class Item : MonoBehaviour
     private bool isOpening = false; // Kiểm soát trạng thái cửa
     private bool isDoorOpening = false;
 
-     public AudioClip doorOpenSound;
-     public AudioClip doorCloseSound;
+    public AudioClip doorOpenSound;
+    public AudioClip doorCloseSound;
 
     public bool isInteracted;
 
@@ -35,12 +35,12 @@ public class Item : MonoBehaviour
     public AudioClip[] dialogueClips;  // Âm thanh tương ứng
     public AudioSource audioSource;  // Thêm AudioSource vào cửa
     
-
-
     // Attributes for examine item
     public bool isExamineMode;
     private Vector3 oldPositon;
     private Quaternion oldRotation;
+
+    public bool isHighlightItem = false;
 
     private void Update()
     {
