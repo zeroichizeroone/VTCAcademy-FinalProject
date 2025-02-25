@@ -26,12 +26,15 @@ public class Item : MonoBehaviour
     private bool isOpening = false; // Kiểm soát trạng thái cửa
     private bool isDoorOpening = false;
 
+     public AudioClip doorOpenSound;
+     public AudioClip doorCloseSound;
+
     public bool isInteracted;
 
     public string[] dialogueLines;  // Câu thoại khi tương tác
     public AudioClip[] dialogueClips;  // Âm thanh tương ứng
     public AudioSource audioSource;  // Thêm AudioSource vào cửa
-    public AudioClip doorSound;  // Âm thanh khi mở cửa
+    
 
 
     // Attributes for examine item
@@ -143,13 +146,14 @@ public class Item : MonoBehaviour
 
         isDoorOpening = true;
 
-        // 🔊 Phát âm thanh mở cửa
-        if (audioSource != null && doorSound != null)
+        //Phát âm thanh mở cửa hoặc đóng cửa dựa trên trạng thái
+        if (audioSource != null)
         {
-            audioSource.PlayOneShot(doorSound);
+            AudioClip clipToPlay = isInteracted ? doorCloseSound : doorOpenSound;
+            if (clipToPlay != null) audioSource.PlayOneShot(clipToPlay);
         }
 
-        float timeToRotate = 1.6f;
+        float timeToRotate = 1.9f;
         Quaternion startRotation = transform.rotation;
         Quaternion endRotation = Quaternion.Euler(0, transform.eulerAngles.y + (isInteracted ? -angleRotate : angleRotate), 0);
 
