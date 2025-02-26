@@ -11,6 +11,7 @@ TagManager:
   - pickup
   - doorkeyitem1
   - doorkeyitem2
+  - bb1
   layers:
   - Default
   - TransparentFX

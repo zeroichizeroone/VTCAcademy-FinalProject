@@ -139,12 +139,12 @@ public class ShuraMovement : MonoBehaviour
         }
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+   /* private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log("Hit: " + hit.gameObject.name );
         if (hit.gameObject.name == "DUST")
         {
             hit.gameObject.name ="DUST123";
         }
-    }
+    }*/
 }

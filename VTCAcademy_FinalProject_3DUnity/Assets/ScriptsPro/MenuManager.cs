@@ -30,7 +30,8 @@ public class MenuManager : MonoBehaviour
     private void OnStartButtonClicked()
     {
         Debug.Log("Start Game clicked");
-        //SceneManager.LoadScene("GameScene");
+        ShuraLoading.sceneName = "Map1";
+        SceneManager.LoadScene("Loading");
     }
 
     private void OnContinueButtonClicked()
