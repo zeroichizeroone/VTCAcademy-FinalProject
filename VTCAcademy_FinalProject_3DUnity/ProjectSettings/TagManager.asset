@@ -12,6 +12,7 @@ TagManager:
   - doorkeyitem1
   - doorkeyitem2
   - bb1
+  - doorkeyitem3
   layers:
   - Default
   - TransparentFX
