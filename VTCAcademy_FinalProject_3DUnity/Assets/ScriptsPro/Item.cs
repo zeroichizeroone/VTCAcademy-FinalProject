@@ -1,8 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public enum ItemType
 {
@@ -34,13 +31,16 @@ public class Item : MonoBehaviour
     public string[] dialogueLines;  // Câu thoại khi tương tác
     public AudioClip[] dialogueClips;  // Âm thanh tương ứng
     public AudioSource audioSource;  // Thêm AudioSource vào cửa
-    
+
     // Attributes for examine item
     public bool isExamineMode;
     private Vector3 oldPositon;
     private Quaternion oldRotation;
 
     public bool isHighlightItem = false;
+
+    // Biến mới: kích hoạt hiệu ứng kinh dị khi nhặt
+    public bool triggerHorrorEffect = false;
 
     private void Update()
     {
@@ -60,48 +60,23 @@ public class Item : MonoBehaviour
             case ItemType.door:
                 StartCoroutine(DoorInteraction(125));
                 break;
-
             case ItemType.drawer:
                 StartCoroutine(DrawerInteraction(0.6f));
                 break;
-
-
             case ItemType.cupboard:
                 StartCoroutine(CupBoardInteraction(75));
                 break;
-
             case ItemType.examineItem:
                 ExamineItem();
                 break;
-
             case ItemType.collectionItem:
                 ExamineItem();
                 break;
         }
     }
 
-
-    private void ShowDescription()
-    {
-        if (itemDescription != "")
-        {
-            // Show description
-            MessageManager.Instance.ShowTextMessage(itemDescription);
-        }
-    }
-
-    private void ShowMessage()
-    {
-        if (itemMessage != "")
-        {
-            // Show message
-            MessageManager.Instance.ShowTextMessage(itemMessage);
-        }
-
-    }
     private IEnumerator CupBoardInteraction(int angleRotate)
     {
-
         if (isOpening) yield break; // Nếu cửa đang mở, không cho phép tương tác tiếp
 
         isOpening = true; // Đánh dấu cửa đang mở
@@ -119,18 +94,17 @@ public class Item : MonoBehaviour
         }
 
         float elapsedTime = 0;
-
         while (elapsedTime < timeToRotate)
         {
             transform.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime / timeToRotate);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
         isOpening = false; // Cho phép tương tác lại sau khi cửa mở xong
     }
+
     private IEnumerator DoorInteraction(int angleRotate)
     {
         string doorTag = gameObject.tag;
@@ -146,7 +120,7 @@ public class Item : MonoBehaviour
 
         isDoorOpening = true;
 
-        //Phát âm thanh mở cửa hoặc đóng cửa dựa trên trạng thái
+        // Phát âm thanh mở cửa hoặc đóng cửa dựa trên trạng thái
         if (audioSource != null)
         {
             AudioClip clipToPlay = isInteracted ? doorCloseSound : doorOpenSound;
@@ -164,12 +138,10 @@ public class Item : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.rotation = endRotation;
         isInteracted = !isInteracted;
         isDoorOpening = false;
     }
-
 
     private IEnumerator DrawerInteraction(float pullDistance)
     {
@@ -192,14 +164,12 @@ public class Item : MonoBehaviour
         }
 
         float elapsedTime = 0;
-
         while (elapsedTime < timeToMove)
         {
             transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / timeToMove);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         transform.localPosition = endPosition;
         isInteracted = !isInteracted;
         isOpening = false; // Cho phép tương tác lại sau khi hoàn thành mở/ngăn kéo
@@ -213,7 +183,6 @@ public class Item : MonoBehaviour
             float mouseY = Input.GetAxis("Mouse Y");
 
             Vector3 rotation = new Vector3(-mouseY, mouseX, 0) * 200 * Time.deltaTime;
-
             transform.Rotate(rotation, Space.World);
         }
     }
@@ -256,7 +225,6 @@ public class Item : MonoBehaviour
             {
                 CollectItem();
             }
-
             else if (itemType == ItemType.examineItem)
             {
                 transform.position = oldPositon;
@@ -268,9 +236,51 @@ public class Item : MonoBehaviour
 
     private void CollectItem()
     {
-        
+        // Kiểm tra xem có cần kích hoạt hiệu ứng kinh dị không
+        if (triggerHorrorEffect && HorrorEffects.Instance != null)
+        {
+            // Kích hoạt hiệu ứng kinh dị
+            HorrorEffects.Instance.TriggerHorrorEffect();
+
+            // Delay nhặt đồ để hiệu ứng được hiển thị trước
+            StartCoroutine(DelayedCollect());
+        }
+        else
+        {
+            // Nhặt đồ ngay lập tức nếu không kích hoạt hiệu ứng
+            AddItemAndShowMessage();
+        }
+    }
+
+    private IEnumerator DelayedCollect()
+    {
+        // Thay vì dùng shakeDuration (đã loại bỏ hiệu ứng rung),
+        // ta sử dụng motionBlurDuration để chờ hiệu ứng nhòe hoàn thành.
+        yield return new WaitForSeconds(HorrorEffects.Instance.motionBlurDuration);
+
+        AddItemAndShowMessage();
+    }
+
+    private void AddItemAndShowMessage()
+    {
         InventoryManager.Instance.AddItemToInventory(this);
         gameObject.SetActive(false);
         ShowMessage();
+    }
+
+    private void ShowDescription()
+    {
+        if (!string.IsNullOrEmpty(itemDescription))
+        {
+            MessageManager.Instance.ShowTextMessage(itemDescription);
+        }
+    }
+
+    private void ShowMessage()
+    {
+        if (!string.IsNullOrEmpty(itemMessage))
+        {
+            MessageManager.Instance.ShowTextMessage(itemMessage);
+        }
     }
 }
