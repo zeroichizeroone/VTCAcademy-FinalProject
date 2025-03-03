@@ -7104,7 +7104,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -7803,7 +7803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &277659532
 Transform:
   m_ObjectHideFlags: 0
@@ -9176,7 +9176,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -13355,7 +13355,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -13823,7 +13823,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1cc47e290d89e2145bf621c9bbcd0050, type: 3}
   audioSource: {fileID: 0}
   isExamineMode: 0
-  isHighlightItem: 0
+  isHighlightItem: 1
+--- !u!65 &489337942
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489337937}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.2, z: 0.1}
+  m_Center: {x: 0.00033964217, y: -0.0024950102, z: -0.0010874046}
 --- !u!1001 &490838822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14888,7 +14909,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
-  m_Range: 12
+  m_Range: 3
   m_SpotAngle: 113
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -16385,7 +16406,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -17979,7 +18000,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2
-  m_Range: 6
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -18450,7 +18471,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
-  m_Range: 12
+  m_Range: 2
   m_SpotAngle: 113
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -19590,7 +19611,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 169cbd886915e874fa3c53b1bc639d4e, type: 3}
   audioSource: {fileID: 0}
   isExamineMode: 0
-  isHighlightItem: 0
+  isHighlightItem: 1
 --- !u!65 &688057896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19610,8 +19631,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.1, y: 0.2, z: 0.074018605}
+  m_Center: {x: -0.00000013424226, y: 0.010550052, z: 0.012990694}
 --- !u!1001 &690092440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21944,7 +21965,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -24482,7 +24503,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 141084f888aabf84e82cfee3b5934d07, type: 3}
   audioSource: {fileID: 0}
   isExamineMode: 0
-  isHighlightItem: 0
+  isHighlightItem: 1
 --- !u!65 &888614674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32754,7 +32775,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 5
+  m_Range: 3
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -33369,7 +33390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881069387890311767, guid: d934c0492bd9bcd448573dafeb856621, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 7881069387890311767, guid: d934c0492bd9bcd448573dafeb856621, type: 3}
       propertyPath: m_LocalScale.y
@@ -46325,7 +46346,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -47929,7 +47950,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2.5
-  m_Range: 7
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -49751,7 +49772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881069387890311767, guid: d934c0492bd9bcd448573dafeb856621, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.31571
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 7881069387890311767, guid: d934c0492bd9bcd448573dafeb856621, type: 3}
       propertyPath: m_LocalScale.y
@@ -53437,7 +53458,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   m_Intensity: 5
-  m_Range: 12
+  m_Range: 3
   m_SpotAngle: 113
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -53752,7 +53773,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.5754717, g: 0.5526894, b: 0.4478907, a: 1}
   m_Intensity: 2
-  m_Range: 6
+  m_Range: 1
   m_SpotAngle: 117
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -60456,7 +60477,7 @@ Transform:
   m_GameObject: {fileID: 919132148963410233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.45, y: 0, z: 16.11}
+  m_LocalPosition: {x: 0.03, y: 0, z: -0.18}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -60602,6 +60623,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6972f4bfc5301414ba01b6e8606ff09d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 489337939}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6972f4bfc5301414ba01b6e8606ff09d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 489337942}
   m_SourcePrefab: {fileID: 100100000, guid: 6972f4bfc5301414ba01b6e8606ff09d, type: 3}
 --- !u!114 &596022785231180954
 MonoBehaviour:
@@ -66122,7 +66146,7 @@ Transform:
   m_GameObject: {fileID: 856721977121602956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -18.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
