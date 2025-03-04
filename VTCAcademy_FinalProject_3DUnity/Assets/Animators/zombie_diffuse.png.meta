@@ -1,0 +1,1002 @@
+fileFormatVersion: 2
+guid: eebaa736bd226dc49b360dfdf1e40aaf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9008779133955054160
+    second: zombie_diffuse_0
+  - first:
+      213: -346378917675192794
+    second: zombie_diffuse_1
+  - first:
+      213: 575840161704485482
+    second: zombie_diffuse_2
+  - first:
+      213: 4938652242849380920
+    second: zombie_diffuse_3
+  - first:
+      213: -8107861933593940455
+    second: zombie_diffuse_4
+  - first:
+      213: 9062214740857748547
+    second: zombie_diffuse_5
+  - first:
+      213: 448222307205607437
+    second: zombie_diffuse_6
+  - first:
+      213: 9091387310378454364
+    second: zombie_diffuse_7
+  - first:
+      213: 8371485384827411281
+    second: zombie_diffuse_8
+  - first:
+      213: -3414727426115913864
+    second: zombie_diffuse_9
+  - first:
+      213: -5076821349008386349
+    second: zombie_diffuse_10
+  - first:
+      213: -2309844261005363516
+    second: zombie_diffuse_11
+  - first:
+      213: 9081935881528045202
+    second: zombie_diffuse_12
+  - first:
+      213: -155359155095225216
+    second: zombie_diffuse_13
+  - first:
+      213: -773042919550002240
+    second: zombie_diffuse_14
+  - first:
+      213: 5563008366952137774
+    second: zombie_diffuse_15
+  - first:
+      213: -1362257993880983001
+    second: zombie_diffuse_16
+  - first:
+      213: -8976556391388489734
+    second: zombie_diffuse_17
+  - first:
+      213: 7601464519698484274
+    second: zombie_diffuse_18
+  - first:
+      213: -3248436015723068951
+    second: zombie_diffuse_19
+  - first:
+      213: -3512308490026422105
+    second: zombie_diffuse_20
+  - first:
+      213: 2938498946536258784
+    second: zombie_diffuse_21
+  - first:
+      213: -3156837881116174424
+    second: zombie_diffuse_22
+  - first:
+      213: -5746901529731006683
+    second: zombie_diffuse_23
+  - first:
+      213: -4399861564268278585
+    second: zombie_diffuse_24
+  - first:
+      213: -5091600541390967560
+    second: zombie_diffuse_25
+  - first:
+      213: 7237930002880998007
+    second: zombie_diffuse_26
+  - first:
+      213: 8726959470242493306
+    second: zombie_diffuse_27
+  - first:
+      213: -8280732035561177457
+    second: zombie_diffuse_28
+  - first:
+      213: 4906697408131830083
+    second: zombie_diffuse_29
+  - first:
+      213: -8495926461337447752
+    second: zombie_diffuse_30
+  - first:
+      213: 84982655461990907
+    second: zombie_diffuse_31
+  - first:
+      213: 6295589208722614750
+    second: zombie_diffuse_32
+  - first:
+      213: -2470124006790022681
+    second: zombie_diffuse_33
+  - first:
+      213: -8193301368973035815
+    second: zombie_diffuse_34
+  - first:
+      213: -8610780876536045029
+    second: zombie_diffuse_35
+  - first:
+      213: 3030988469504399776
+    second: zombie_diffuse_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zombie_diffuse_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1461
+        width: 1184
+        height: 587
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b568a4bb136af280800000000000000
+      internalID: -9008779133955054160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_1
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 2039
+        width: 66
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62e2946a53a613bf0800000000000000
+      internalID: -346378917675192794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_2
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 2010
+        width: 144
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a62accd739bcdf700800000000000000
+      internalID: 575840161704485482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_3
+      rect:
+        serializedVersion: 2
+        x: 1797
+        y: 2041
+        width: 21
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a393c7c0e998440800000000000000
+      internalID: 4938652242849380920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_4
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2009
+        width: 64
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91ea83857861b7f80800000000000000
+      internalID: -8107861933593940455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_5
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 1840
+        width: 524
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34c722b0b4473cd70800000000000000
+      internalID: 9062214740857748547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_6
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1959
+        width: 281
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d00756940d7683600800000000000000
+      internalID: 448222307205607437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_7
+      rect:
+        serializedVersion: 2
+        x: 1943
+        y: 1694
+        width: 105
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5d0a9e27981b2e70800000000000000
+      internalID: 9091387310378454364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_8
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 1322
+        width: 939
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b130d7a9d7d2470800000000000000
+      internalID: 8371485384827411281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_9
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 1839
+        width: 251
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877b3997f737c90d0800000000000000
+      internalID: -3414727426115913864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_10
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 1442
+        width: 418
+        height: 502
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d65c3891e18b89b0800000000000000
+      internalID: -5076821349008386349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_11
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 1467
+        width: 142
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6fc48f1e8c1ffd0800000000000000
+      internalID: -2309844261005363516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_12
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1303
+        width: 481
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e6a5be094890e70800000000000000
+      internalID: 9081935881528045202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_13
+      rect:
+        serializedVersion: 2
+        x: 1874
+        y: 1354
+        width: 119
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08cb1fbebad08ddf0800000000000000
+      internalID: -155359155095225216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_14
+      rect:
+        serializedVersion: 2
+        x: 1973
+        y: 1347
+        width: 75
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb57187f899545f0800000000000000
+      internalID: -773042919550002240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_15
+      rect:
+        serializedVersion: 2
+        x: 2022
+        y: 1494
+        width: 26
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2445bab2a6c33d40800000000000000
+      internalID: 5563008366952137774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1124
+        width: 146
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72aa9467299481de0800000000000000
+      internalID: -1362257993880983001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_17
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 673
+        width: 849
+        height: 782
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7d609958ddc6380800000000000000
+      internalID: -8976556391388489734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_18
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 981
+        width: 1233
+        height: 429
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23c0d55d4b3dd7960800000000000000
+      internalID: 7601464519698484274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_19
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 719
+        width: 365
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e1cd3797ac3be2d0800000000000000
+      internalID: -3248436015723068951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_20
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 927
+        width: 84
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0f26e8906c14fc0800000000000000
+      internalID: -3512308490026422105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_21
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 645
+        width: 444
+        height: 370
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec37291935a7c820800000000000000
+      internalID: 2938498946536258784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_22
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 971
+        width: 396
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7d29a3ca8a034d0800000000000000
+      internalID: -3156837881116174424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_23
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 511
+        width: 377
+        height: 472
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ffb31d187ee30b0800000000000000
+      internalID: -5746901529731006683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_24
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 797
+        width: 159
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cc05e0083d80f2c0800000000000000
+      internalID: -4399861564268278585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_25
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 972
+        width: 44
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc6438b8400759b0800000000000000
+      internalID: -5091600541390967560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 912
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a2dda4dfa427460800000000000000
+      internalID: 7237930002880998007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_27
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 556
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a73f80996636c1970800000000000000
+      internalID: 8726959470242493306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_28
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 15
+        width: 1072
+        height: 699
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ebd2c361ee41d80800000000000000
+      internalID: -8280732035561177457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_29
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 553
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3411700cb47181440800000000000000
+      internalID: 4906697408131830083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_30
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 421
+        width: 438
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b2d32295e7681a80800000000000000
+      internalID: -8495926461337447752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_31
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 9
+        width: 1038
+        height: 652
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1a1ee564bed2100800000000000000
+      internalID: 84982655461990907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_32
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 425
+        width: 419
+        height: 390
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed9a1b5a70d6e5750800000000000000
+      internalID: 6295589208722614750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_33
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 377
+        width: 129
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9bd189d4b58bdd0800000000000000
+      internalID: -2470124006790022681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 459
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6f3ac90db8b4e80800000000000000
+      internalID: -8193301368973035815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_35
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 0
+        width: 727
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b12a7572a6c508880800000000000000
+      internalID: -8610780876536045029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_diffuse_36
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 87
+        width: 817
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a95d1344fb301a20800000000000000
+      internalID: 3030988469504399776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
