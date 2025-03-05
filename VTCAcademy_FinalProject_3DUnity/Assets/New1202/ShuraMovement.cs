@@ -41,6 +41,9 @@ public class ShuraMovement : MonoBehaviour
     private Animator animator;
     private float currentSpeed;
 
+    public GameObject patrolBoss;
+    public GameObject settingObject;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,6 +54,11 @@ public class ShuraMovement : MonoBehaviour
         originalCharacterCenterY = controller.center.y;
     }
 
+    public void OnOffPatrolBoss()
+    { 
+        patrolBoss.SetActive(!patrolBoss.activeSelf);
+    }
+
     private void Update()
     {
         HandleMovement();
@@ -58,6 +66,16 @@ public class ShuraMovement : MonoBehaviour
         UpdateAnimations();
         HandleCrawl();
         CharacterHotKey();
+
+        if (Input.GetKeyDown(KeyCode.M))
+        { 
+            OnOffPatrolBoss();
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            settingObject.SetActive(!settingObject.activeSelf);
+        }
     }
 
     private void HandleMovement()
