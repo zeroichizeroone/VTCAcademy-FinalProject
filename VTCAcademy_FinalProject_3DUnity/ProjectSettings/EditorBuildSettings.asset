@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8854b53c79a52437ea0f6cc594fdc5bc
+  - enabled: 1
     path: Assets/Sound Effects/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -21,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroGame.unity
     guid: 2328ed05f891b604090905cb6695091f
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 8854b53c79a52437ea0f6cc594fdc5bc
+    path: Assets/Scenes/DemoTimeLine.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

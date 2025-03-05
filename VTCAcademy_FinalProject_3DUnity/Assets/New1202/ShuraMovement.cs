@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShuraMovement : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class ShuraMovement : MonoBehaviour
 
     private float originalCameraDeep;
     private float originalCameraHeight;
-    private float originalCharacterHeight; 
+    private float originalCharacterHeight;
     private float originalCharacterCenterY;
 
     private bool isCrawling = false;
@@ -125,7 +126,7 @@ public class ShuraMovement : MonoBehaviour
         }
         else
         {
-            cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, originalCameraHeight,originalCameraDeep);
+            cameraTransform.localPosition = new Vector3(cameraTransform.localPosition.x, originalCameraHeight, originalCameraDeep);
             controller.height = originalCharacterHeight;
             controller.center = new Vector3(controller.center.x, originalCharacterCenterY, controller.center.z);
         }
@@ -139,12 +140,65 @@ public class ShuraMovement : MonoBehaviour
         }
     }
 
-   /* private void OnControllerColliderHit(ControllerColliderHit hit)
+    public void FaintRightNow()
     {
-        Debug.Log("Hit: " + hit.gameObject.name );
-        if (hit.gameObject.name == "DUST")
-        {
-            hit.gameObject.name ="DUST123";
+        animator.SetBool("isFaint", true);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("faint_zone"))
+        { 
+            FaintRightNow();
+            StartThirdPersonView();
+            StartCoroutine(ChangeScene());
         }
-    }*/
+    }
+
+    public void StartFaintToMoveScene2()
+    {
+        FaintRightNow();
+        StartThirdPersonView();
+        StartCoroutine(ChangeScene());
+    }
+
+    private IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(5f);
+        //ShuraLoading.sceneName = "IntroGame";
+        SceneManager.LoadScene("IntroGame");
+    }
+
+    public void StartThirdPersonView()
+    {
+        StartCoroutine(TransitionToThirdPerson());
+    }
+
+    private IEnumerator TransitionToThirdPerson()
+    {
+        float duration = 1.5f; // Thời gian chuyển đổi
+        float elapsed = 0f;
+        Vector3 startPosition = cameraTransform.localPosition;
+        Vector3 targetPosition = new Vector3(startPosition.x, startPosition.y, -1f); // Kéo camera ra sau
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            cameraTransform.localPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(5f); // Đợi 3 giây để người chơi thấy cảnh ngã
+
+        // Trả camera về góc nhìn thứ nhất
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            cameraTransform.localPosition = Vector3.Lerp(targetPosition, startPosition, t);
+            yield return null;
+        }
+    }
 }

@@ -12,6 +12,8 @@ public class JumpscareTrigger : MonoBehaviour
 
     private bool hasTriggered = false;
 
+    public GameObject bossPatrol;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !hasTriggered)
@@ -40,6 +42,17 @@ public class JumpscareTrigger : MonoBehaviour
 
         // Tắt hình ảnh jumpscare sau khi hết thời gian
         jumpscareObject.SetActive(false);
+
+        if (gameObject.name == "JumScare2")
+        {
+            bossPatrol.SetActive(true);
+        }
+
+        if (gameObject.name == "JumScare3")
+        {
+            var shura = GameObject.FindGameObjectWithTag("Player");
+            shura.GetComponent<ShuraMovement>().StartFaintToMoveScene2();
+        }
     }
 
     IEnumerator CameraShake()

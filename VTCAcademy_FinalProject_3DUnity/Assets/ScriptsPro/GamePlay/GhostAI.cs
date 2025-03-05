@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class GhostAI : MonoBehaviour
 {
@@ -14,7 +17,7 @@ public class GhostAI : MonoBehaviour
     public float patrolSpeed = 2f; // Tốc độ di chuyển khi đi tuần
     public float chaseSpeed = 5f; // Tốc độ di chuyển khi truy đuổi
     public Transform[] patrolPoints; // Các điểm đi tuần
-    public float chaseRange = 10f; // Khoảng cách để kích hoạt truy đuổi
+    public float chaseRange = 1f; // Khoảng cách để kích hoạt truy đuổi
     public float chaseDuration = 3f; // Thời gian truy đuổi liên tục
     public float idleDuration = 2f; // Thời gian đứng yên sau khi truy đuổi
 
@@ -33,6 +36,25 @@ public class GhostAI : MonoBehaviour
 
         // Khởi tạo trạng thái ban đầu
         SetState(GhostState.Idle);
+
+        StartCoroutine(IncreaseChaseRangeOverTime());
+    }
+
+    private IEnumerator IncreaseChaseRangeOverTime()
+    {
+        while (chaseRange < 6f) // Chỉ tăng nếu chaseRange < 6
+        {
+            yield return new WaitForSeconds(60f); // Mỗi 60 giây
+            chaseRange += 1f;
+
+            // Đảm bảo không vượt quá 6
+            if (chaseRange > 6f)
+            {
+                chaseRange = 6f;
+            }
+
+            Debug.Log("Chase Range tăng lên: " + chaseRange);
+        }
     }
 
     void Update()
@@ -142,6 +164,14 @@ public class GhostAI : MonoBehaviour
 
             // Đảo trạng thái chase liên tục
             isChasingContinuously = !isChasingContinuously;
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("DemoTimeLine");
         }
     }
 }
