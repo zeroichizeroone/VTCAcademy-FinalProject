@@ -9321,6 +9321,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &321041366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19082,6 +19083,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 581de5f0f19bd374997e03c89e6dcbc0, type: 3}
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!65 &688057896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22294,6 +22296,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 812446106}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!82 &812446106
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23374,6 +23377,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &864451136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23935,6 +23939,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 141084f888aabf84e82cfee3b5934d07, type: 3}
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!65 &888614674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24232,6 +24237,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &900046195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24344,9 +24350,9 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -26134,6 +26140,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &995249816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8157603651170850553, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
@@ -26164,6 +26171,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!4 &995249819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8826617528135945283, guid: 41c12b996b215284eb3a11473821eaeb, type: 3}
@@ -29325,6 +29333,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1125517776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35549,6 +35558,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1331591922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38192,6 +38202,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1415572353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40448,6 +40459,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1498925500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40793,6 +40805,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 1512707428}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!82 &1512707428
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44026,6 +44039,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 1621247729}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!82 &1621247729
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48106,6 +48120,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1764157798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49319,6 +49334,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!114 &1795558297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49344,6 +49360,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1798860005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50437,6 +50454,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &1848896006
 GameObject:
   m_ObjectHideFlags: 0
@@ -50580,6 +50598,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1854419020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51962,6 +51981,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1 &1904101201
 GameObject:
   m_ObjectHideFlags: 0
@@ -53991,6 +54011,7 @@ MonoBehaviour:
   dialogueClips: []
   audioSource: {fileID: 0}
   isExamineMode: 0
+  isHighlightItem: 0
 --- !u!1001 &1974200236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54286,6 +54307,9 @@ MonoBehaviour:
   detectiveEnergy: {fileID: 317021890}
   maxEnergy: 5000
   energyPerSec: 100
+  shakeDuration: 0.5
+  shakeMagnitude: 0.1
+  dampingSpeed: 1
 --- !u!81 &1985615340
 AudioListener:
   m_ObjectHideFlags: 0
@@ -64153,9 +64177,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.8
-  m_Radius: 0.3
-  m_SlopeLimit: 60
-  m_StepOffset: 0.5
+  m_Radius: 0.34
+  m_SlopeLimit: 70
+  m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}

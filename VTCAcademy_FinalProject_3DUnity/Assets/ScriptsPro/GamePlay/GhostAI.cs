@@ -144,4 +144,12 @@ public class GhostAI : MonoBehaviour
             isChasingContinuously = !isChasingContinuously;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // TimelineManager.Instance.PlayTimeline("JumpScare_1");
+        }
+    }
 }
