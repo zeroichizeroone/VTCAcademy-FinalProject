@@ -17,5 +17,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2.unity
     guid: 3b02a8427c0b55841b50b69cadc3726a
+  - enabled: 1
+    path: Assets/Scenes/IntroGame.unity
+    guid: 2328ed05f891b604090905cb6695091f
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8854b53c79a52437ea0f6cc594fdc5bc
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -204,6 +204,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -994,7 +1007,44 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      zombie_diffuse_0: -9008779133955054160
+      zombie_diffuse_1: -346378917675192794
+      zombie_diffuse_10: -5076821349008386349
+      zombie_diffuse_11: -2309844261005363516
+      zombie_diffuse_12: 9081935881528045202
+      zombie_diffuse_13: -155359155095225216
+      zombie_diffuse_14: -773042919550002240
+      zombie_diffuse_15: 5563008366952137774
+      zombie_diffuse_16: -1362257993880983001
+      zombie_diffuse_17: -8976556391388489734
+      zombie_diffuse_18: 7601464519698484274
+      zombie_diffuse_19: -3248436015723068951
+      zombie_diffuse_2: 575840161704485482
+      zombie_diffuse_20: -3512308490026422105
+      zombie_diffuse_21: 2938498946536258784
+      zombie_diffuse_22: -3156837881116174424
+      zombie_diffuse_23: -5746901529731006683
+      zombie_diffuse_24: -4399861564268278585
+      zombie_diffuse_25: -5091600541390967560
+      zombie_diffuse_26: 7237930002880998007
+      zombie_diffuse_27: 8726959470242493306
+      zombie_diffuse_28: -8280732035561177457
+      zombie_diffuse_29: 4906697408131830083
+      zombie_diffuse_3: 4938652242849380920
+      zombie_diffuse_30: -8495926461337447752
+      zombie_diffuse_31: 84982655461990907
+      zombie_diffuse_32: 6295589208722614750
+      zombie_diffuse_33: -2470124006790022681
+      zombie_diffuse_34: -8193301368973035815
+      zombie_diffuse_35: -8610780876536045029
+      zombie_diffuse_36: 3030988469504399776
+      zombie_diffuse_4: -8107861933593940455
+      zombie_diffuse_5: 9062214740857748547
+      zombie_diffuse_6: 448222307205607437
+      zombie_diffuse_7: 9091387310378454364
+      zombie_diffuse_8: 8371485384827411281
+      zombie_diffuse_9: -3414727426115913864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
